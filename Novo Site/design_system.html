@@ -1,0 +1,618 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Design System — Nova Era</title>
+
+    <!-- Google Fonts: Aetheria (Playfair & Montserrat) + Lunar Rhythm (Newsreader) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'brand-bg': '#F7F5F0',
+                        'brand-dark': '#2F3E35',
+                        'brand-sage': '#8A9A8B',
+                        'brand-gold': '#C9A96E',
+                        'brand-cream': '#EFECE5'
+                    },
+                    fontFamily: {
+                        'primary': ['"Playfair Display"', 'serif'],
+                        'body': ['"Montserrat"', 'sans-serif'],
+                        'accent': ['"Newsreader"', 'serif']
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Iconify -->
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+
+    <style>
+        /* Base e Typography globais */
+        body {
+            background-color: #F7F5F0;
+            color: #2F3E35;
+            font-family: 'Montserrat', sans-serif;
+            overflow-x: hidden;
+        }
+
+        /* Animações e Efeitos Globais */
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+        @keyframes slow-pan {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
+        }
+        @keyframes shimmer {
+            0% { background-position: -200% 0; }
+            100% { background-position: 200% 0; }
+        }
+        
+        .animate-float { animation: float 6s ease-in-out infinite; }
+        .animate-slow-pan { animation: slow-pan 20s ease-in-out infinite; }
+        
+        /* Efeito Glow / Shimmer em Botões */
+        .btn-glow {
+            position: relative;
+            overflow: hidden;
+        }
+        .btn-glow::after {
+            content: '';
+            position: absolute;
+            top: 0; left: -100%; width: 50%; height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            transform: skewX(-20deg);
+            transition: all 0.7s ease;
+        }
+        .btn-glow:hover::after {
+            left: 150%;
+        }
+
+        /* Glassmorphism Classes (Lunar Rhythm & Aetheria blend) */
+        .liquid-glass {
+            background: rgba(255, 255, 255, 0.4);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px rgba(47, 62, 53, 0.05);
+        }
+        .dark-glass {
+            background: rgba(47, 62, 53, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+        }
+
+        /* Gradient Borders (Clinical Beauty / Lunar Rhythm style) */
+        .border-gradient-gold {
+            position: relative;
+        }
+        .border-gradient-gold::before {
+            content: "";
+            position: absolute;
+            inset: 0;
+            padding: 1px;
+            border-radius: inherit;
+            background: linear-gradient(45deg, #C9A96E, transparent, #8A9A8B);
+            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+            -webkit-mask-composite: xor;
+            mask-composite: exclude;
+            pointer-events: none;
+        }
+
+        /* Hover Cards */
+        .card-hover { transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1); }
+        .card-hover:hover { 
+            transform: translateY(-8px); 
+            box-shadow: 0 20px 40px rgba(47, 62, 53, 0.08); 
+        }
+
+        /* Scroll Reveal (Aparecimento suave) */
+        .reveal {
+            opacity: 0;
+            transform: translateY(40px);
+            transition: all 1s cubic-bezier(0.5, 0, 0, 1);
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .delay-100 { transition-delay: 100ms; }
+        .delay-200 { transition-delay: 200ms; }
+        .delay-300 { transition-delay: 300ms; }
+        
+        /* Utilitário para esconder scrollbar */
+        .hide-scrollbar::-webkit-scrollbar { display: none; }
+        .hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+        /* Background Textures */
+        .noise-bg {
+            position: absolute;
+            inset: 0;
+            opacity: 0.4;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            mix-blend-mode: overlay;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body class="selection:bg-brand-sage selection:text-white relative">
+
+    <!-- Ambient background orbs (Aetheria style) -->
+    <div class="pointer-events-none fixed inset-0 z-0 overflow-hidden">
+        <div class="absolute -top-24 left-1/2 -translate-x-1/2 bg-brand-sage/20 w-[40rem] h-[40rem] rounded-full blur-[100px] animate-pulse"></div>
+        <div class="absolute bottom-[-10rem] left-[-10rem] h-[35rem] w-[35rem] rounded-full bg-brand-gold/10 blur-[120px]"></div>
+        <div class="absolute top-[35%] right-[-10rem] h-[30rem] w-[30rem] rounded-full bg-brand-dark/5 blur-[100px]"></div>
+    </div>
+
+    <!-- Navegação em Glassmorphism -->
+    <nav class="fixed top-4 left-4 right-4 md:left-8 md:right-8 z-50 liquid-glass rounded-full px-6 py-4 flex items-center justify-between transition-all duration-500 reveal active">
+        <div class="flex items-center gap-3 group cursor-pointer">
+            <iconify-icon icon="solar:leaf-bold-duotone" class="text-brand-dark text-2xl group-hover:text-brand-sage transition-colors"></iconify-icon>
+            <span class="font-primary text-xl tracking-tight text-brand-dark">Aetheria <span class="font-accent italic font-light text-brand-sage">Nova</span></span>
+        </div>
+        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-brand-dark/70">
+            <a href="#typography" class="hover:text-brand-dark transition-colors">Tipografia</a>
+            <a href="#colors" class="hover:text-brand-dark transition-colors">Cores</a>
+            <a href="#components" class="hover:text-brand-dark transition-colors">Componentes</a>
+        </div>
+        <button class="bg-brand-dark text-brand-bg px-6 py-2.5 rounded-full text-xs uppercase tracking-widest font-medium btn-glow hover:bg-brand-sage transition-colors shadow-lg shadow-brand-dark/20">
+            Download Assets
+        </button>
+    </nav>
+
+    <!-- 1. HERO: Demonstração das capacidades -->
+    <header class="relative min-h-[100svh] flex flex-col justify-center items-center overflow-hidden pt-20">
+        <!-- Background Imersivo com Video/Imagem e Mix-blend -->
+        <div class="absolute inset-0 z-0">
+            <div class="absolute inset-0 bg-brand-bg/60 z-10 backdrop-blur-[2px]"></div>
+            <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?auto=format&fit=crop&w=2400&q=80" alt="Santuário" class="w-full h-full object-cover animate-slow-pan opacity-80 mix-blend-multiply" />
+            <div class="absolute inset-0 bg-gradient-to-b from-brand-dark/10 via-transparent to-brand-bg z-10"></div>
+            <div class="noise-bg z-10"></div>
+        </div>
+
+        <div class="relative z-20 w-full max-w-5xl mx-auto px-6 text-center flex flex-col items-center">
+            
+            <div class="inline-flex items-center gap-2 rounded-full border border-white/40 bg-white/20 px-5 py-2 text-xs font-medium tracking-widest uppercase text-brand-dark backdrop-blur-md mb-8 reveal shadow-xl shadow-brand-dark/5">
+                <span class="relative flex h-2 w-2">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-sage opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-2 w-2 bg-brand-sage"></span>
+                </span>
+                Design System 2.0
+            </div>
+
+            <h1 class="font-primary text-5xl md:text-7xl lg:text-[5.5rem] leading-[1.1] text-brand-dark tracking-tight reveal delay-100">
+                A beleza no <br>
+                <em class="font-accent italic text-brand-sage font-light">detalhe invisível.</em>
+            </h1>
+            
+            <p class="mt-8 text-base md:text-lg text-brand-dark/70 font-light max-w-2xl reveal delay-200">
+                Uma fusão do minimalismo somático de Aetheria com a elegância luxuosa de nossos sistemas mais avançados. Fluido, intencional e perfeitamente equilibrado.
+            </p>
+
+            <div class="mt-12 flex items-center gap-4 reveal delay-300">
+                <a href="#components" class="bg-brand-sage text-brand-bg px-8 py-4 rounded-full text-sm font-medium shadow-xl shadow-brand-sage/20 hover:-translate-y-1 hover:shadow-2xl hover:shadow-brand-sage/30 transition-all duration-300 btn-glow flex items-center gap-2">
+                    Explorar Componentes
+                    <iconify-icon icon="solar:arrow-right-linear" class="text-lg"></iconify-icon>
+                </a>
+                <a href="#typography" class="liquid-glass text-brand-dark px-8 py-4 rounded-full text-sm font-medium hover:bg-white/60 transition-all duration-300 flex items-center gap-2">
+                    <iconify-icon icon="solar:book-2-linear" class="text-lg"></iconify-icon>
+                    Documentação
+                </a>
+            </div>
+        </div>
+
+        <!-- Scroll Indicator animado -->
+        <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center gap-2 opacity-60 animate-float">
+            <span class="text-[10px] uppercase tracking-[0.2em] font-medium text-brand-dark">Scroll</span>
+            <div class="w-px h-12 bg-gradient-to-b from-brand-dark to-transparent"></div>
+        </div>
+    </header>
+
+    <main class="relative z-10 bg-brand-bg/80 backdrop-blur-3xl rounded-t-[3rem] -mt-8 border-t border-white/50 shadow-[0_-20px_60px_rgba(47,62,53,0.05)] pt-24 pb-32">
+        
+        <!-- 2. TYPOGRAPHY -->
+        <section id="typography" class="max-w-7xl mx-auto px-6 mb-32">
+            <div class="mb-16 reveal">
+                <h2 class="text-[10px] uppercase tracking-[0.3em] text-brand-sage font-semibold mb-3">01 / Fundamentos</h2>
+                <h3 class="font-primary text-4xl md:text-5xl text-brand-dark">Tipografia</h3>
+                <p class="mt-4 text-sm text-brand-dark/60 max-w-lg leading-relaxed">
+                    A hierarquia visual é estabelecida através do contraste elegante entre a serifa clássica (Playfair Display) e a clareza geométrica (Montserrat), pontuada por acentos sofisticados (Newsreader). Carregamento via Google Fonts (CDN).
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-2 gap-16">
+                <!-- Headings -->
+                <div class="space-y-10">
+                    <div class="border-b border-brand-dark/10 pb-4 reveal">
+                        <span class="text-xs font-mono text-brand-sage mb-2 block">Display (H1) • Playfair Display • Regular 400 • 5.5rem • -0.02em</span>
+                        <h1 class="font-primary text-6xl tracking-tight text-brand-dark leading-none">Agua & Terra</h1>
+                    </div>
+                    <div class="border-b border-brand-dark/10 pb-4 reveal delay-100">
+                        <span class="text-xs font-mono text-brand-sage mb-2 block">Heading (H2) • Playfair Display • Regular 400 • 3rem • -0.01em</span>
+                        <h2 class="font-primary text-5xl tracking-tight text-brand-dark leading-tight">Ritual Diário</h2>
+                    </div>
+                    <div class="border-b border-brand-dark/10 pb-4 reveal delay-200">
+                        <span class="text-xs font-mono text-brand-sage mb-2 block">Subtitle (H3) • Newsreader • Italic 300 • 2.25rem</span>
+                        <h3 class="font-accent italic font-light text-4xl text-brand-dark">A beleza no detalhe</h3>
+                    </div>
+                    <div class="border-b border-brand-dark/10 pb-4 reveal delay-300">
+                        <span class="text-xs font-mono text-brand-sage mb-2 block">Section (H4) • Montserrat • Medium 500 • 1.5rem • 0em</span>
+                        <h4 class="font-body text-2xl font-medium text-brand-dark">Componentes de Interface</h4>
+                    </div>
+                </div>
+
+                <!-- Body Text -->
+                <div class="space-y-10">
+                    <div class="liquid-glass p-8 rounded-3xl reveal">
+                        <span class="text-xs font-mono text-brand-sage mb-4 block">Body Large • Montserrat • Light 300 • 1.125rem • 1.7</span>
+                        <p class="font-body text-lg font-light text-brand-dark/80 leading-relaxed">
+                            Em um mundo que nunca para, oferecemos uma pausa. Combinamos antigas tradições com tecnologia moderna para ajudá-lo a encontrar seu ritmo.
+                        </p>
+                    </div>
+                    <div class="liquid-glass p-8 rounded-3xl reveal delay-100">
+                        <span class="text-xs font-mono text-brand-sage mb-4 block">Body Standard • Montserrat • Regular 400 • 1rem • 1.6</span>
+                        <p class="font-body text-base text-brand-dark/80 leading-relaxed">
+                            A interface deve ser tão silenciosa quanto a própria natureza. Reduzimos a carga cognitiva utilizando muito espaço em branco, cores terrosas e tipografia bem equilibrada.
+                        </p>
+                    </div>
+                    <div class="liquid-glass p-8 rounded-3xl reveal delay-200">
+                        <span class="text-xs font-mono text-brand-sage mb-4 block">Captions / Overline • Montserrat • Medium 500 • 0.75rem • 0.2em uppercase</span>
+                        <p class="font-body text-xs font-medium uppercase tracking-[0.2em] text-brand-sage">
+                            Detalhes & Especificações Técnicas
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. SISTEMA DE CORES -->
+        <section id="colors" class="max-w-7xl mx-auto px-6 mb-32 pt-16">
+            <div class="mb-16 reveal">
+                <h2 class="text-[10px] uppercase tracking-[0.3em] text-brand-sage font-semibold mb-3">02 / Identidade</h2>
+                <h3 class="font-primary text-4xl md:text-5xl text-brand-dark">Sistema de Cores</h3>
+                <p class="mt-4 text-sm text-brand-dark/60 max-w-lg leading-relaxed">
+                    Inspirado pela natureza (Aetheria) e complementado por toques de luxo (Clinical & Lunar). Projetado para garantir contraste AA/AAA nas aplicações principais.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-5 gap-6">
+                <!-- Color Cards com animação ao passar o mouse -->
+                <div class="reveal card-hover group cursor-pointer">
+                    <div class="h-32 w-full rounded-2xl bg-[#2F3E35] mb-4 shadow-lg shadow-[#2F3E35]/20 border border-black/5 flex items-end p-3 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
+                        <span class="text-white text-xs font-medium">AAA Contrast</span>
+                    </div>
+                    <h4 class="font-body font-semibold text-sm">Forest Dark</h4>
+                    <p class="text-xs text-brand-dark/60 mt-1">#2F3E35 / Primary Text</p>
+                    <p class="text-[10px] font-mono text-brand-dark/40 mt-1">rgb(47, 62, 53)</p>
+                </div>
+
+                <div class="reveal delay-100 card-hover group cursor-pointer">
+                    <div class="h-32 w-full rounded-2xl bg-[#8A9A8B] mb-4 shadow-lg shadow-[#8A9A8B]/20 border border-black/5 flex items-end p-3 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
+                        <span class="text-white text-xs font-medium">AA Contrast</span>
+                    </div>
+                    <h4 class="font-body font-semibold text-sm">Sage Green</h4>
+                    <p class="text-xs text-brand-dark/60 mt-1">#8A9A8B / Accent & Brand</p>
+                    <p class="text-[10px] font-mono text-brand-dark/40 mt-1">rgb(138, 154, 139)</p>
+                </div>
+
+                <div class="reveal delay-200 card-hover group cursor-pointer">
+                    <div class="h-32 w-full rounded-2xl bg-[#C9A96E] mb-4 shadow-lg shadow-[#C9A96E]/20 border border-black/5 flex items-end p-3 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-white/0 group-hover:bg-white/10 transition-colors"></div>
+                    </div>
+                    <h4 class="font-body font-semibold text-sm">Luxury Gold</h4>
+                    <p class="text-xs text-brand-dark/60 mt-1">#C9A96E / Highlights & Hover</p>
+                    <p class="text-[10px] font-mono text-brand-dark/40 mt-1">rgb(201, 169, 110)</p>
+                </div>
+
+                <div class="reveal delay-300 card-hover group cursor-pointer">
+                    <div class="h-32 w-full rounded-2xl bg-[#F7F5F0] mb-4 shadow-sm border border-black/5 flex items-end p-3 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors"></div>
+                        <span class="text-brand-dark text-xs font-medium">Base</span>
+                    </div>
+                    <h4 class="font-body font-semibold text-sm">Oatmeal Background</h4>
+                    <p class="text-xs text-brand-dark/60 mt-1">#F7F5F0 / Surface & Base</p>
+                    <p class="text-[10px] font-mono text-brand-dark/40 mt-1">rgb(247, 245, 240)</p>
+                </div>
+
+                <div class="reveal delay-400 card-hover group cursor-pointer">
+                    <div class="h-32 w-full rounded-2xl bg-[#EFECE5] mb-4 shadow-sm border border-black/5 flex items-end p-3 relative overflow-hidden">
+                        <div class="absolute inset-0 bg-black/0 group-hover:bg-black/5 transition-colors"></div>
+                    </div>
+                    <h4 class="font-body font-semibold text-sm">Cream Neutral</h4>
+                    <p class="text-xs text-brand-dark/60 mt-1">#EFECE5 / Cards & Modals</p>
+                    <p class="text-[10px] font-mono text-brand-dark/40 mt-1">rgb(239, 236, 229)</p>
+                </div>
+            </div>
+            
+            <!-- Gradients -->
+            <div class="mt-12 grid md:grid-cols-2 gap-6 reveal">
+                <div class="h-24 rounded-2xl bg-gradient-to-r from-brand-dark to-brand-sage p-6 flex items-center shadow-lg shadow-brand-dark/10">
+                    <span class="text-white text-sm font-medium">brand-dark → brand-sage</span>
+                </div>
+                <div class="h-24 rounded-2xl bg-gradient-to-r from-brand-gold to-[#A3B18A] p-6 flex items-center shadow-lg shadow-brand-gold/20">
+                    <span class="text-white text-sm font-medium">brand-gold → soft-sage (Lunar style)</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. UI COMPONENTS -->
+        <section id="components" class="max-w-7xl mx-auto px-6 mb-32 pt-16">
+            <div class="mb-16 reveal">
+                <h2 class="text-[10px] uppercase tracking-[0.3em] text-brand-sage font-semibold mb-3">03 / Interface</h2>
+                <h3 class="font-primary text-4xl md:text-5xl text-brand-dark">Componentes</h3>
+                <p class="mt-4 text-sm text-brand-dark/60 max-w-lg leading-relaxed">
+                    Elementos interativos construídos com foco em micro-interações, glassmorphism e sombras fluidas.
+                </p>
+            </div>
+
+            <!-- Botões e Badges -->
+            <div class="grid lg:grid-cols-2 gap-12 mb-16">
+                <!-- Botões -->
+                <div class="liquid-glass p-10 rounded-[2rem] reveal">
+                    <h4 class="font-primary text-2xl text-brand-dark mb-8">Buttons & Actions</h4>
+                    
+                    <div class="space-y-6">
+                        <div class="flex flex-wrap items-center gap-4">
+                            <!-- Primary -->
+                            <button class="bg-brand-dark text-brand-bg px-8 py-3.5 rounded-full text-sm font-medium hover:bg-brand-sage transition-all duration-300 shadow-lg shadow-brand-dark/10 hover:shadow-brand-sage/30 hover:-translate-y-0.5">
+                                Primary Action
+                            </button>
+                            
+                            <!-- Secondary / Glass -->
+                            <button class="bg-white/40 border border-white/60 text-brand-dark px-8 py-3.5 rounded-full text-sm font-medium hover:bg-white/80 transition-all duration-300 backdrop-blur-md shadow-sm">
+                                Secondary Glass
+                            </button>
+                        </div>
+                        
+                        <div class="flex flex-wrap items-center gap-4">
+                            <!-- Luxury Gold -->
+                            <button class="bg-brand-gold text-white px-8 py-3.5 rounded-full text-xs uppercase tracking-widest font-medium hover:bg-[#b0925c] transition-all duration-300 btn-glow shadow-lg shadow-brand-gold/30">
+                                Luxury Action
+                            </button>
+
+                            <!-- Ghost with Arrow -->
+                            <a href="#" class="group flex items-center gap-2 text-sm font-medium text-brand-dark/80 hover:text-brand-dark transition-colors">
+                                Explorar Mais
+                                <iconify-icon icon="solar:arrow-right-linear" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Inputs e Badges -->
+                <div class="liquid-glass p-10 rounded-[2rem] reveal delay-100">
+                    <h4 class="font-primary text-2xl text-brand-dark mb-8">Inputs & Badges</h4>
+                    
+                    <div class="space-y-6">
+                        <!-- Input field -->
+                        <div class="relative">
+                            <iconify-icon icon="solar:letter-linear" class="absolute left-4 top-1/2 -translate-y-1/2 text-brand-dark/40 text-lg"></iconify-icon>
+                            <input type="email" placeholder="Seu e-mail..." class="w-full bg-white/50 border border-white/60 rounded-full py-3.5 pl-12 pr-4 text-sm text-brand-dark placeholder:text-brand-dark/40 focus:outline-none focus:ring-2 focus:ring-brand-sage/50 focus:bg-white transition-all backdrop-blur-sm">
+                        </div>
+
+                        <!-- Badges -->
+                        <div class="flex flex-wrap gap-3 pt-4">
+                            <span class="inline-flex items-center gap-1.5 bg-brand-sage/10 text-brand-sage px-3 py-1 rounded-full text-xs font-medium border border-brand-sage/20">
+                                <span class="w-1.5 h-1.5 rounded-full bg-brand-sage"></span> Active Status
+                            </span>
+                            
+                            <span class="inline-flex items-center gap-1.5 bg-brand-gold/10 text-[#a3844d] px-3 py-1 rounded-full text-xs font-medium border border-brand-gold/20">
+                                <iconify-icon icon="solar:star-bold"></iconify-icon> Premium
+                            </span>
+                            
+                            <span class="inline-flex items-center gap-1.5 bg-brand-dark text-white px-3 py-1 rounded-full text-[10px] uppercase tracking-widest font-medium shadow-sm">
+                                Novo Retiro
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Cards -->
+            <div class="mb-16">
+                <h4 class="font-primary text-2xl text-brand-dark mb-8 reveal">Cards & Modals</h4>
+                
+                <div class="grid md:grid-cols-3 gap-8">
+                    <!-- Standard Card (Aetheria style) -->
+                    <div class="rounded-3xl bg-white/60 border border-white/80 p-6 shadow-sm hover:shadow-xl hover:shadow-brand-dark/5 transition-all duration-500 card-hover reveal">
+                        <div class="w-12 h-12 rounded-2xl bg-brand-sage/15 flex items-center justify-center text-brand-sage mb-6">
+                            <iconify-icon icon="solar:moon-sleep-linear" class="text-2xl"></iconify-icon>
+                        </div>
+                        <h5 class="font-primary text-xl text-brand-dark mb-2">Quietude Somática</h5>
+                        <p class="text-sm text-brand-dark/70 font-light leading-relaxed mb-6">
+                            Práticas meditativas profundas desenhadas para regular o sistema nervoso e promover sono reparador.
+                        </p>
+                        <a href="#" class="text-xs uppercase tracking-widest text-brand-sage font-semibold flex items-center gap-2 group">
+                            Descubra <iconify-icon icon="solar:arrow-right-linear" class="group-hover:translate-x-1 transition-transform"></iconify-icon>
+                        </a>
+                    </div>
+
+                    <!-- Media Card (Lunar Rhythm style) -->
+                    <div class="rounded-3xl overflow-hidden relative group card-hover reveal delay-100 cursor-pointer">
+                        <div class="absolute inset-0 bg-brand-dark/20 group-hover:bg-brand-dark/10 transition-colors z-10"></div>
+                        <img src="https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?auto=format&fit=crop&w=800&q=80" alt="Yoga" class="w-full h-full object-cover aspect-[4/5] group-hover:scale-105 transition-transform duration-700">
+                        
+                        <div class="absolute top-4 left-4 z-20">
+                            <span class="bg-white/20 backdrop-blur-md border border-white/30 text-white px-3 py-1.5 rounded-full text-[10px] uppercase tracking-widest font-medium">
+                                Masterclass
+                            </span>
+                        </div>
+                        
+                        <div class="absolute bottom-0 left-0 right-0 p-6 z-20 bg-gradient-to-t from-black/80 via-black/30 to-transparent">
+                            <h5 class="font-primary text-2xl text-white mb-1">Flow Dinâmico</h5>
+                            <p class="text-xs text-white/70 font-light flex items-center gap-2">
+                                <iconify-icon icon="solar:clock-circle-linear"></iconify-icon> 45 min • com Elena R.
+                            </p>
+                        </div>
+                    </div>
+
+                    <!-- Luxury Card (Clinical/Pet Boarding style) -->
+                    <div class="rounded-3xl bg-brand-dark p-8 text-brand-bg relative overflow-hidden card-hover border-gradient-gold reveal delay-200 flex flex-col justify-between aspect-[4/5]">
+                        <!-- Subtle pattern bg -->
+                        <div class="absolute inset-0 opacity-5">
+                            <svg width="100%" height="100%" xmlns="http://www.w3.org/2000/svg"><defs><pattern id="dots" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse"><circle fill="#ffffff" cx="2" cy="2" r="1.5"></circle></pattern></defs><rect x="0" y="0" width="100%" height="100%" fill="url(#dots)"></rect></svg>
+                        </div>
+                        
+                        <div class="relative z-10">
+                            <iconify-icon icon="solar:crown-star-linear" class="text-brand-gold text-3xl mb-4"></iconify-icon>
+                            <h5 class="font-primary text-3xl text-brand-cream mb-3">Premium <br><em class="font-accent italic text-brand-gold">Experience</em></h5>
+                            <p class="text-sm text-brand-bg/60 font-light">
+                                Acesso ilimitado a todas as comodidades de luxo, retiros privados e acompanhamento somático.
+                            </p>
+                        </div>
+                        
+                        <button class="relative z-10 w-full bg-brand-gold text-white py-3.5 rounded-full text-xs uppercase tracking-widest font-semibold hover:bg-white hover:text-brand-dark transition-all duration-300">
+                            Tornar-se Membro
+                        </button>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Sections / Modals Preview -->
+            <div class="mb-16">
+                <div class="rounded-[3rem] bg-brand-cream p-1 lg:p-2 border border-white/50 shadow-2xl shadow-brand-dark/5 reveal">
+                    <div class="rounded-[2.5rem] border border-brand-dark/5 bg-white/50 backdrop-blur-md p-8 md:p-16 text-center max-w-3xl mx-auto flex flex-col items-center">
+                        <div class="w-16 h-16 rounded-full bg-brand-sage/20 text-brand-sage flex items-center justify-center text-3xl mb-6">
+                            <iconify-icon icon="solar:cup-star-bold-duotone"></iconify-icon>
+                        </div>
+                        <h4 class="font-primary text-3xl md:text-4xl text-brand-dark mb-4">Pronto para transformar?</h4>
+                        <p class="text-base text-brand-dark/70 font-light mb-8 max-w-lg">
+                            Demonstração de uma seção de CTA estilo Modal. Bordas duplas, glassmorphism aninhado e foco absoluto no conteúdo central.
+                        </p>
+                        <div class="flex items-center gap-4">
+                            <button class="bg-brand-dark text-white px-8 py-3 rounded-full text-sm font-medium hover:bg-brand-sage transition-colors">Confirmar Reserva</button>
+                            <button class="text-brand-dark px-6 py-3 text-sm font-medium hover:opacity-60 transition-opacity">Cancelar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. ICONES E 6. ANIMAÇÕES -->
+        <section id="icons" class="max-w-7xl mx-auto px-6 pt-16">
+            <div class="grid lg:grid-cols-2 gap-16">
+                <!-- Icones -->
+                <div class="reveal">
+                    <h2 class="text-[10px] uppercase tracking-[0.3em] text-brand-sage font-semibold mb-3">04 / Simbologia</h2>
+                    <h3 class="font-primary text-3xl text-brand-dark mb-8">Ícones & Simbologia</h3>
+                    
+                    <div class="grid grid-cols-4 sm:grid-cols-5 gap-4">
+                        <div class="aspect-square rounded-2xl bg-white/60 border border-white flex flex-col items-center justify-center gap-2 hover:bg-brand-sage hover:text-white text-brand-dark transition-colors cursor-pointer shadow-sm">
+                            <iconify-icon icon="solar:sun-2-linear" class="text-2xl"></iconify-icon>
+                        </div>
+                        <div class="aspect-square rounded-2xl bg-white/60 border border-white flex flex-col items-center justify-center gap-2 hover:bg-brand-sage hover:text-white text-brand-dark transition-colors cursor-pointer shadow-sm">
+                            <iconify-icon icon="solar:moon-sleep-linear" class="text-2xl"></iconify-icon>
+                        </div>
+                        <div class="aspect-square rounded-2xl bg-white/60 border border-white flex flex-col items-center justify-center gap-2 hover:bg-brand-sage hover:text-white text-brand-dark transition-colors cursor-pointer shadow-sm">
+                            <iconify-icon icon="solar:waterdrops-linear" class="text-2xl"></iconify-icon>
+                        </div>
+                        <div class="aspect-square rounded-2xl bg-white/60 border border-white flex flex-col items-center justify-center gap-2 hover:bg-brand-sage hover:text-white text-brand-dark transition-colors cursor-pointer shadow-sm">
+                            <iconify-icon icon="solar:leaf-linear" class="text-2xl"></iconify-icon>
+                        </div>
+                        <div class="aspect-square rounded-2xl bg-white/60 border border-white flex flex-col items-center justify-center gap-2 hover:bg-brand-sage hover:text-white text-brand-dark transition-colors cursor-pointer shadow-sm">
+                            <iconify-icon icon="solar:heart-angle-linear" class="text-2xl"></iconify-icon>
+                        </div>
+                        <div class="aspect-square rounded-2xl bg-white/60 border border-white flex flex-col items-center justify-center gap-2 hover:bg-brand-sage hover:text-white text-brand-dark transition-colors cursor-pointer shadow-sm">
+                            <iconify-icon icon="solar:star-fall-linear" class="text-2xl"></iconify-icon>
+                        </div>
+                        <div class="aspect-square rounded-2xl bg-white/60 border border-white flex flex-col items-center justify-center gap-2 hover:bg-brand-sage hover:text-white text-brand-dark transition-colors cursor-pointer shadow-sm">
+                            <iconify-icon icon="solar:crown-star-linear" class="text-2xl"></iconify-icon>
+                        </div>
+                        <div class="aspect-square rounded-2xl bg-white/60 border border-white flex flex-col items-center justify-center gap-2 hover:bg-brand-sage hover:text-white text-brand-dark transition-colors cursor-pointer shadow-sm">
+                            <iconify-icon icon="solar:clock-circle-linear" class="text-2xl"></iconify-icon>
+                        </div>
+                    </div>
+                    <p class="text-xs text-brand-dark/50 mt-4">Padrão Iconify: Solar Icons (Linear/Bold Duotone)</p>
+                </div>
+
+                <!-- Animations Info -->
+                <div class="reveal delay-100">
+                    <h2 class="text-[10px] uppercase tracking-[0.3em] text-brand-sage font-semibold mb-3">05 / Interação</h2>
+                    <h3 class="font-primary text-3xl text-brand-dark mb-8">Animações Globais</h3>
+                    
+                    <ul class="space-y-6">
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-sage/20 flex flex-shrink-0 items-center justify-center text-brand-sage">
+                                <iconify-icon icon="solar:hamburger-menu-linear"></iconify-icon>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-sm mb-1">Scroll Reveal (.reveal)</h5>
+                                <p class="text-xs text-brand-dark/70 font-light leading-relaxed">Todos os elementos de página sobem suavemente com fade in (transform: translateY(40px) para 0) observados via IntersectionObserver.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-gold/20 flex flex-shrink-0 items-center justify-center text-brand-gold">
+                                <iconify-icon icon="solar:mouse-circle-linear"></iconify-icon>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-sm mb-1">Hover Cards (.card-hover)</h5>
+                                <p class="text-xs text-brand-dark/70 font-light leading-relaxed">Elevação de -8px com expansão suave de box-shadow simulando profundidade óptica.</p>
+                            </div>
+                        </li>
+                        <li class="flex items-start gap-4">
+                            <div class="w-10 h-10 rounded-full bg-brand-dark/10 flex flex-shrink-0 items-center justify-center text-brand-dark">
+                                <iconify-icon icon="solar:magic-stick-3-linear"></iconify-icon>
+                            </div>
+                            <div>
+                                <h5 class="font-semibold text-sm mb-1">Ambient Orbs (.animate-pulse / .animate-float)</h5>
+                                <p class="text-xs text-brand-dark/70 font-light leading-relaxed">Divs borradas (blur-100px) ao fundo criando uma sensação orgânica e imersiva sem distrair o olhar.</p>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-brand-cream pt-24 pb-12 text-center relative z-10 rounded-t-[3rem] -mt-10">
+        <h2 class="font-primary text-4xl mb-6">Pronto para criar?</h2>
+        <p class="text-brand-cream/60 font-light text-sm mb-10 max-w-md mx-auto">
+            Este Design System unifica os melhores conceitos de nossos sites de luxo, spa e bem-estar.
+        </p>
+        <div class="w-px h-16 bg-gradient-to-b from-brand-gold to-transparent mx-auto mb-8"></div>
+        <p class="text-xs text-brand-cream/40 uppercase tracking-widest">© 2024 Projeto Naninha — Nova Era</p>
+    </footer>
+
+    <!-- Logic for Reveal Animations -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const reveals = document.querySelectorAll('.reveal');
+            
+            const revealOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const revealOnScroll = new IntersectionObserver(function(entries, observer) {
+                entries.forEach(entry => {
+                    if (!entry.isIntersecting) return;
+                    entry.target.classList.add('active');
+                    // Opcional: parar de observar após revelar uma vez
+                    // observer.unobserve(entry.target);
+                });
+            }, revealOptions);
+
+            reveals.forEach(reveal => {
+                revealOnScroll.observe(reveal);
+            });
+        });
+    </script>
+</body>
+</html>
