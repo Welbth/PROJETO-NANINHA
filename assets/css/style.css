@@ -22,12 +22,13 @@ body {
         .animate-float { animation: float 6s ease-in-out infinite; }
         .animate-slow-pan { animation: slow-pan 20s ease-in-out infinite; }
         .animate-shimmer-text {
-            background: linear-gradient(90deg, #b0925c 0%, #b0925c 40%, #fdf4d8 50%, #b0925c 60%, #b0925c 100%);
+            background: linear-gradient(90deg, #b0925c 0%, #b0925c 45%, #dec9a3 50%, #b0925c 55%, #b0925c 100%);
             background-size: 200% auto;
             color: transparent;
+            -webkit-text-fill-color: transparent;
             -webkit-background-clip: text;
             background-clip: text;
-            animation: shimmer-text 5s linear infinite;
+            animation: shimmer-text 6s linear infinite;
             display: inline-block;
         }
         
