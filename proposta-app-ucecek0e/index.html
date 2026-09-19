@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex, nofollow, noarchive">
+<title>Proposta do App | Dra. Adriana Orneles</title>
+<meta name="theme-color" content="#3A412E">
+<link rel="icon" type="image/png" href="../assets/images/favicon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Newsreader:ital,wght@0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#F6F5F2; --surface:#FFFFFF; --cream:#EBE7E0; --dark:#3A412E; --ink:#2E3326;
+  --muted:#5F6656; --sage:#A2AD8E; --sage-d:#6F7A5C; --gold:#C7A26B; --gold-d:#96733A;
+  --line:rgba(58,65,46,.12); --green:#4E9A5B; --yellow:#D9A520; --red:#C4553F;
+  --radius:24px; --shadow:0 18px 50px rgba(58,65,46,.08);
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{background:var(--bg);color:var(--ink);font-family:Montserrat,system-ui,sans-serif;font-size:16px;line-height:1.65;overflow-x:hidden}
+img{max-width:100%}
+h1,h2,h3{font-family:"Playfair Display",Georgia,serif;font-weight:500;line-height:1.2;color:var(--dark)}
+em.acc{font-family:Newsreader,Georgia,serif;font-style:italic;font-weight:300;color:var(--gold-d)}
+a{color:inherit}
+.wrap{max-width:980px;margin:0 auto;padding:0 20px}
+section{scroll-margin-top:84px}
+
+/* Barra superior */
+.topbar{position:sticky;top:0;z-index:50;background:rgba(246,245,242,.88);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line)}
+.topbar .wrap{display:flex;align-items:center;justify-content:space-between;gap:12px;height:64px}
+.brand{font-family:"Playfair Display",serif;font-size:18px;white-space:nowrap}
+.brand span{font-family:Newsreader,serif;font-style:italic;color:var(--sage-d)}
+.progress-pill{display:flex;align-items:center;gap:10px;font-size:12px;font-weight:600;color:var(--muted);white-space:nowrap}
+.progress-bar{width:90px;height:6px;border-radius:99px;background:var(--cream);overflow:hidden}
+.progress-bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--sage),var(--gold));transition:width .5s ease}
+
+/* Hero */
+.hero{padding:64px 0 40px;position:relative}
+body:before{content:"";position:absolute;top:0;right:0;width:min(560px,100%);height:560px;background:radial-gradient(circle at 85% 12%,rgba(162,173,142,.38),transparent 62%);pointer-events:none;z-index:0}
+main{position:relative;z-index:1}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;font-size:11px;letter-spacing:.18em;text-transform:uppercase;font-weight:600;color:var(--dark);background:rgba(162,173,142,.18);border:1px solid rgba(162,173,142,.4);padding:6px 14px;border-radius:99px}
+.eyebrow:before{content:"";width:6px;height:6px;border-radius:50%;background:var(--sage-d)}
+.hero h1{font-size:clamp(34px,6vw,58px);margin:20px 0 16px;letter-spacing:-.01em}
+.hero p.lead{font-size:clamp(16px,2.2vw,19px);color:var(--muted);max-width:640px}
+.hero-meta{display:flex;flex-wrap:wrap;gap:10px;margin-top:26px}
+.chip{font-size:12px;font-weight:500;background:var(--surface);border:1px solid var(--line);padding:7px 14px;border-radius:99px;color:var(--muted)}
+
+/* Como ler */
+.howto{background:var(--dark);color:#EDEBE4;border-radius:var(--radius);padding:30px;margin:10px 0 50px;box-shadow:var(--shadow)}
+.howto h2{color:#fff;font-size:24px;margin-bottom:14px}
+.howto ol{padding-left:0;list-style:none;display:grid;gap:12px;counter-reset:s}
+.howto li{counter-increment:s;display:flex;gap:14px;align-items:flex-start;font-size:15px}
+.howto li:before{content:counter(s);flex:0 0 28px;height:28px;border-radius:50%;background:var(--gold);color:var(--dark);font-weight:700;display:flex;align-items:center;justify-content:center;font-size:13px;margin-top:1px}
+.legend{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+
+/* Tags */
+.tag{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:5px 11px;border-radius:99px;white-space:nowrap}
+.tag.pedido{background:rgba(199,162,107,.18);color:#7A5B27;border:1px solid rgba(199,162,107,.45)}
+.tag.sugestao{background:rgba(162,173,142,.2);color:#4F5A3E;border:1px solid rgba(162,173,142,.5)}
+.tag.pronto{background:rgba(58,65,46,.9);color:#F6F5F2;border:1px solid var(--dark)}
+.howto .tag.pedido{background:rgba(199,162,107,.25);color:#F1DDB8}
+.howto .tag.sugestao{background:rgba(162,173,142,.25);color:#DCE4CF}
+.howto .tag.pronto{background:#F6F5F2;color:var(--dark)}
+
+/* Seções */
+.sec-head{margin:64px 0 26px}
+.sec-num{font-family:Newsreader,serif;font-style:italic;color:var(--gold-d);font-size:20px}
+.sec-head h2{font-size:clamp(28px,4.5vw,40px);margin-top:4px}
+.sec-head p{color:var(--muted);max-width:680px;margin-top:10px}
+
+/* Funil */
+.funnel{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:10px}
+.fstep{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:16px 14px;position:relative;box-shadow:0 6px 20px rgba(58,65,46,.04)}
+.fstep b{display:block;font-size:13px;color:var(--dark);margin:8px 0 4px;line-height:1.3}
+.fstep small{font-size:12px;color:var(--muted);line-height:1.45;display:block}
+.fstep .ico{width:34px;height:34px;border-radius:10px;background:rgba(162,173,142,.2);display:flex;align-items:center;justify-content:center;font-size:17px}
+.fstep:not(:last-child):after{content:"→";position:absolute;right:-11px;top:50%;transform:translateY(-50%);color:var(--gold);font-weight:700;z-index:1;background:var(--bg);border-radius:50%;width:14px;text-align:center;font-size:13px}
+.fstep.hi{background:var(--dark);border-color:var(--dark)}
+.fstep.hi b{color:#fff}.fstep.hi small{color:#CFCFC4}.fstep.hi .ico{background:rgba(199,162,107,.3)}
+
+/* Perfis */
+.grid{display:grid;gap:16px}
+.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);padding:24px;box-shadow:0 6px 24px rgba(58,65,46,.04)}
+.card h3{font-size:20px;margin-bottom:6px}
+.card p,.card li{font-size:14.5px;color:var(--muted)}
+.card ul{padding-left:18px;margin-top:8px;display:grid;gap:4px}
+.persona .emoji{font-size:28px;display:block;margin-bottom:10px}
+.persona .who{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:600;color:var(--gold-d)}
+
+/* Módulos */
+.module{background:var(--surface);border:1px solid var(--line);border-radius:28px;padding:30px;margin-bottom:22px;box-shadow:var(--shadow)}
+.module-top{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;flex-wrap:wrap}
+.module-title{display:flex;gap:16px;align-items:flex-start}
+.m-ico{flex:0 0 52px;height:52px;border-radius:16px;background:linear-gradient(135deg,rgba(162,173,142,.3),rgba(199,162,107,.25));display:flex;align-items:center;justify-content:center;font-size:24px}
+.module h3{font-size:clamp(22px,3vw,27px)}
+.module .sub{color:var(--muted);font-size:15px;margin-top:4px}
+.tags{display:flex;flex-wrap:wrap;gap:6px}
+.module-body{display:grid;grid-template-columns:1.25fr 1fr;gap:28px;margin-top:24px;align-items:start}
+.module-body.single{grid-template-columns:1fr}
+.steps{list-style:none;display:grid;gap:14px;counter-reset:p}
+.steps li{counter-increment:p;display:grid;grid-template-columns:30px 1fr;gap:12px;font-size:15px;color:var(--ink)}
+.steps li:before{content:counter(p);width:30px;height:30px;border-radius:10px;background:var(--cream);color:var(--dark);font-weight:700;font-size:13px;display:flex;align-items:center;justify-content:center}
+.steps li span{color:var(--muted);display:block;font-size:14px;margin-top:2px}
+.steps-title{font-size:11px;letter-spacing:.16em;text-transform:uppercase;font-weight:700;color:var(--sage-d);margin-bottom:14px}
+.note{background:rgba(199,162,107,.1);border-left:3px solid var(--gold);border-radius:0 14px 14px 0;padding:14px 16px;font-size:14px;color:#5A4A2C;margin-top:18px}
+.note b{color:#4A3A1C}
+.why{background:rgba(162,173,142,.14);border-left:3px solid var(--sage-d);border-radius:0 14px 14px 0;padding:14px 16px;font-size:14px;color:#3F4834;margin-top:18px}
+
+/* Validação por módulo */
+.validate{margin-top:26px;padding-top:20px;border-top:1px dashed var(--line)}
+.validate-row{display:flex;flex-wrap:wrap;align-items:center;gap:10px}
+.validate-row > span{font-size:13px;font-weight:600;color:var(--dark);margin-right:4px}
+.vbtn{font:inherit;font-size:13px;font-weight:600;border-radius:99px;padding:10px 18px;border:1.5px solid var(--line);background:var(--bg);color:var(--dark);cursor:pointer;transition:all .2s ease;display:inline-flex;align-items:center;gap:6px}
+.vbtn:hover{border-color:var(--sage)}
+.vbtn.on.ok{background:var(--green);border-color:var(--green);color:#fff}
+.vbtn.on.adj{background:var(--gold);border-color:var(--gold);color:#fff}
+.vnote{display:none;width:100%;margin-top:12px}
+.vnote.show{display:block}
+textarea,.qtext{width:100%;font:inherit;font-size:14.5px;border:1.5px solid var(--line);border-radius:16px;padding:12px 14px;background:var(--bg);color:var(--ink);resize:vertical;min-height:84px;outline:none;transition:border-color .2s}
+textarea:focus{border-color:var(--gold);background:#fff}
+
+/* Mockup de celular */
+.phone{width:100%;max-width:300px;margin:0 auto;background:#1F231A;border-radius:42px;padding:10px;box-shadow:0 30px 60px rgba(31,35,26,.25)}
+.screen{background:var(--bg);border-radius:33px;overflow:hidden;min-height:540px;position:relative}
+.notch{width:96px;height:24px;background:#1F231A;border-radius:0 0 16px 16px;margin:0 auto}
+.sc{padding:10px 16px 18px;font-size:12px}
+.sc-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.sc-h b{font-family:"Playfair Display",serif;font-size:17px;font-weight:500;color:var(--dark)}
+.sc-h small{color:var(--muted);font-size:10.5px}
+.sc-card{background:#fff;border-radius:16px;padding:11px 12px;margin-bottom:8px;border:1px solid var(--line)}
+.sc-label{font-size:9.5px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--sage-d);margin-bottom:6px}
+.meal{display:flex;align-items:center;justify-content:space-between;padding:5px 0;border-bottom:1px solid rgba(58,65,46,.06);font-size:11.5px}
+.meal:last-child{border-bottom:0}
+.meal .chk{width:17px;height:17px;border-radius:6px;border:1.5px solid var(--sage);display:inline-flex;align-items:center;justify-content:center;font-size:10px;color:#fff;margin-right:7px;vertical-align:-3px}
+.meal .chk.done{background:var(--sage-d);border-color:var(--sage-d)}
+.meal .cam{font-size:12px;opacity:.7}
+.water{display:flex;gap:5px}
+.water i{flex:1;height:24px;border-radius:6px;background:rgba(111,166,196,.18);border:1px solid rgba(111,166,196,.35)}
+.water i.f{background:rgba(111,166,196,.75)}
+.faces{display:flex;justify-content:space-between;align-items:center;font-size:11px;padding:3px 0}
+.faces span.r{display:flex;gap:4px}
+.faces span.r em{font-style:normal;width:21px;height:21px;border-radius:50%;background:var(--bg);display:inline-flex;align-items:center;justify-content:center;font-size:11px;opacity:.45}
+.faces span.r em.s{opacity:1;background:rgba(199,162,107,.3);outline:1.5px solid var(--gold)}
+.tabbar{position:absolute;bottom:0;left:0;right:0;background:#fff;border-top:1px solid var(--line);display:flex;justify-content:space-around;padding:9px 0 13px;font-size:9px;color:var(--muted);text-align:center}
+.tabbar div{display:flex;flex-direction:column;align-items:center;gap:2px}
+.tabbar div.a{color:var(--dark);font-weight:700}
+.tabbar i{font-style:normal;font-size:15px}
+
+/* Semáforo */
+.lights{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:6px}
+.light{border-radius:22px;padding:22px;color:#fff;position:relative;overflow:hidden}
+.light h4{font-family:"Playfair Display",serif;font-size:21px;font-weight:500;margin:8px 0 10px}
+.light ul{padding-left:18px;font-size:14px;display:grid;gap:6px;opacity:.95}
+.light .dot{width:38px;height:38px;border-radius:50%;background:rgba(255,255,255,.28);display:flex;align-items:center;justify-content:center;font-size:18px}
+.light .act{margin-top:14px;font-size:13px;background:rgba(0,0,0,.14);border-radius:12px;padding:10px 12px}
+.light.g{background:linear-gradient(145deg,#4E9A5B,#3C7D48)}
+.light.y{background:linear-gradient(145deg,#D9A520,#B8860B)}
+.light.r{background:linear-gradient(145deg,#C4553F,#A2402D)}
+.board{background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden;margin-top:18px}
+.board-h{display:flex;justify-content:space-between;align-items:center;padding:14px 18px;border-bottom:1px solid var(--line);font-size:13px;flex-wrap:wrap;gap:8px}
+.board-h b{font-family:"Playfair Display",serif;font-size:17px;font-weight:500}
+.counts{display:flex;gap:8px;font-size:12px;font-weight:600}
+.counts span{padding:4px 10px;border-radius:99px}
+.row{display:grid;grid-template-columns:18px 1.3fr 1fr 1fr 1.3fr;gap:12px;align-items:center;padding:12px 18px;border-bottom:1px solid rgba(58,65,46,.06);font-size:13px}
+.row:last-child{border-bottom:0}
+.row .s{width:12px;height:12px;border-radius:50%}
+.row small{color:var(--muted)}
+.row .why-r{font-size:12px;color:var(--muted)}
+.row.head{font-size:10.5px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:var(--sage-d);background:var(--bg)}
+
+/* Roadmap */
+.road{display:grid;gap:14px;position:relative}
+.stage{display:grid;grid-template-columns:64px 1fr;gap:18px;background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px}
+.stage .n{width:64px;height:64px;border-radius:20px;background:var(--cream);display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:"Playfair Display",serif;font-size:26px;color:var(--dark);line-height:1}
+.stage .n small{font-family:Montserrat;font-size:9px;letter-spacing:.14em;text-transform:uppercase;margin-bottom:4px;color:var(--muted)}
+.stage.first{background:var(--dark);border-color:var(--dark)}
+.stage.first h3,.stage.first p,.stage.first li{color:#F1EFE8}
+.stage.first .n{background:var(--gold)}
+.stage h3{font-size:21px;margin-bottom:4px}
+.stage p{font-size:14.5px;color:var(--muted)}
+.stage ul{display:flex;flex-wrap:wrap;gap:6px;list-style:none;margin-top:12px}
+.stage li{font-size:12.5px;background:var(--bg);border:1px solid var(--line);padding:5px 11px;border-radius:99px;color:var(--ink)}
+.stage.first li{background:rgba(255,255,255,.08);border-color:rgba(255,255,255,.15)}
+
+/* Perguntas */
+.q{background:var(--surface);border:1px solid var(--line);border-radius:22px;padding:22px;margin-bottom:14px}
+.q .qn{font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:var(--gold-d)}
+.q h3{font-size:19px;margin:6px 0 6px}
+.q p.ctx{font-size:14px;color:var(--muted);margin-bottom:14px}
+.opts{display:grid;gap:8px;margin-bottom:12px}
+.opt{display:flex;gap:12px;align-items:flex-start;padding:13px 15px;border-radius:14px;border:1.5px solid var(--line);background:var(--bg);cursor:pointer;font-size:14.5px;transition:all .2s}
+.opt:hover{border-color:var(--sage)}
+.opt input{margin-top:4px;accent-color:var(--sage-d);width:17px;height:17px;flex:0 0 auto}
+.opt.sel{border-color:var(--sage-d);background:rgba(162,173,142,.14)}
+.opt small{display:block;color:var(--muted);font-size:12.5px;margin-top:2px}
+.rec{font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--green);margin-left:6px}
+.q textarea{min-height:64px}
+
+/* Envio */
+.send{background:linear-gradient(145deg,var(--dark),#2B3122);color:#EDEBE4;border-radius:32px;padding:40px 30px;text-align:center;margin:40px 0 20px;box-shadow:var(--shadow)}
+.send h2{color:#fff;font-size:clamp(26px,4vw,36px)}
+.send p{color:#CFCFC4;max-width:560px;margin:12px auto 24px}
+.summary{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-bottom:24px;font-size:13px}
+.summary span{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.12);padding:7px 14px;border-radius:99px}
+.btn{font:inherit;font-weight:700;font-size:13px;letter-spacing:.1em;text-transform:uppercase;border:0;border-radius:99px;padding:18px 30px;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:transform .2s ease, box-shadow .2s}
+.btn:hover{transform:translateY(-2px)}
+.btn.wpp{background:#25D366;color:#0B2E16;box-shadow:0 10px 30px rgba(37,211,102,.3)}
+.btn.ghost{background:transparent;color:#EDEBE4;border:1.5px solid rgba(255,255,255,.3);margin-left:8px}
+.toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(120px);background:var(--dark);color:#fff;padding:12px 20px;border-radius:99px;font-size:14px;transition:transform .3s ease;z-index:99;box-shadow:var(--shadow)}
+.toast.show{transform:translateX(-50%) translateY(0)}
+footer{text-align:center;color:var(--muted);font-size:12.5px;padding:30px 0 50px}
+
+/* Índice */
+.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:24px}
+.toc a{font-size:13px;text-decoration:none;background:var(--surface);border:1px solid var(--line);padding:8px 14px;border-radius:99px;color:var(--dark);transition:border-color .2s}
+.toc a:hover{border-color:var(--gold)}
+
+@media (max-width:860px){
+  .funnel{grid-template-columns:repeat(2,1fr)}
+  .fstep:not(:last-child):after{display:none}
+  .g3,.g4{grid-template-columns:repeat(2,1fr)}
+  .module-body{grid-template-columns:1fr}
+  .lights{grid-template-columns:1fr}
+  .row{grid-template-columns:14px 1.4fr 1fr;}
+  .row .hide-m{display:none}
+}
+@media (max-width:560px){
+  .wrap{padding:0 16px}
+  .g2,.g3,.g4{grid-template-columns:1fr}
+  .module{padding:22px;border-radius:24px}
+  .howto{padding:24px}
+  .progress-bar{width:56px}
+  .brand{font-size:16px}
+  .stage{grid-template-columns:1fr;gap:12px}
+  .btn{width:100%;justify-content:center}
+  .btn.ghost{margin:10px 0 0}
+  .send{padding:32px 20px}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="wrap">
+    <div class="brand">Dra. Adriana <span>Orneles</span></div>
+    <div class="progress-pill"><span id="prog-text">0 de 0 validados</span><div class="progress-bar"><i id="prog-bar"></i></div></div>
+  </div>
+</div>
+
+<main class="wrap">
+
+<!-- HERO -->
+<header class="hero">
+  <span class="eyebrow">Proposta para validação · Versão 1</span>
+  <h1>Seu aplicativo e<br><em class="acc">área de membros.</em></h1>
+  <p class="lead">Tudo o que você pediu, mais algumas ideias novas, organizado passo a passo. Leia com calma, aprove o que gostou, comente o que quer mudar e responda as perguntas no final.</p>
+  <div class="hero-meta">
+    <span class="chip">📱 Aplicativo para celular (PWA)</span>
+    <span class="chip">💻 Também funciona no computador</span>
+    <span class="chip">🔒 Dados protegidos pela LGPD</span>
+  </div>
+  <nav class="toc" aria-label="Índice">
+    <a href="#visao">1. Visão geral</a>
+    <a href="#perfis">2. Quem usa</a>
+    <a href="#modulos">3. Funcionalidades</a>
+    <a href="#semaforo">4. Semáforo</a>
+    <a href="#privacidade">5. Privacidade</a>
+    <a href="#etapas">6. Etapas</a>
+    <a href="#perguntas">7. Perguntas</a>
+  </nav>
+</header>
+
+<!-- COMO LER -->
+<div class="howto">
+  <h2>Como validar esta proposta</h2>
+  <ol>
+    <li>Leia cada funcionalidade. Todas têm um "passo a passo" de como vão funcionar no dia a dia.</li>
+    <li>No final de cada uma, toque em <b>✓ Aprovo</b> ou <b>✎ Quero ajustar</b>. Se quiser ajustar, escreva o que mudaria.</li>
+    <li>Responda as perguntas da seção 7. Elas decidem detalhes importantes.</li>
+    <li>No final, toque em <b>Enviar pelo WhatsApp</b>. Suas respostas vão organizadas numa mensagem só. Tudo fica salvo neste aparelho, pode parar e continuar depois.</li>
+  </ol>
+  <div class="legend">
+    <span class="tag pedido">★ Pedido seu</span>
+    <span class="tag sugestao">✦ Sugestão nova</span>
+    <span class="tag pronto">✓ Já pronto no sistema</span>
+  </div>
+</div>
+
+<!-- 1. VISÃO GERAL -->
+<section id="visao">
+  <div class="sec-head">
+    <div class="sec-num">01</div>
+    <h2>Visão geral: <em class="acc">dois ambientes, um só app</em></h2>
+    <p>O app terá uma <b>área de conteúdo</b> (cursos, aulas, PDFs, receitas) aberta para quem se cadastrar, e um <b>consultório digital</b>, o "Meu Acompanhamento", que só suas pacientes de consulta enxergam. Juntos, eles formam um caminho natural da seguidora até a paciente:</p>
+  </div>
+  <div class="funnel">
+    <div class="fstep"><div class="ico">🌐</div><b>Site</b><small>A pessoa conhece você em draadrianaorneles.com.br</small></div>
+    <div class="fstep"><div class="ico">📋</div><b>Quiz</b><small>Faz a avaliação metabólica e vê o resultado</small></div>
+    <div class="fstep"><div class="ico">🎓</div><b>Conta grátis</b><small>Ganha acesso aos cursos e conteúdos gratuitos</small></div>
+    <div class="fstep"><div class="ico">💬</div><b>Confiança</b><small>Aprende com você, recebe dicas e notificações</small></div>
+    <div class="fstep"><div class="ico">📅</div><b>Consulta</b><small>Agenda a consulta pelo app ou WhatsApp</small></div>
+    <div class="fstep hi"><div class="ico">🌿</div><b>Paciente</b><small>Você libera o "Meu Acompanhamento" para ela</small></div>
+  </div>
+  <div class="why" style="margin-top:22px"><b>Por que assim:</b> o conteúdo gratuito atrai e educa; o acompanhamento é o que a paciente de consulta recebe a mais. Isso valoriza sua consulta e dá um motivo claro para a aluna virar paciente.</div>
+</section>
+
+<!-- 2. PERFIS -->
+<section id="perfis">
+  <div class="sec-head">
+    <div class="sec-num">02</div>
+    <h2>Quem usa o app <em class="acc">e o que cada um vê</em></h2>
+  </div>
+  <div class="grid g4">
+    <div class="card persona"><span class="emoji">🎓</span><div class="who">Aluna</div><h3>Seguidora</h3><p>Se cadastra sozinha (pelo site ou pelo quiz). Vê cursos gratuitos, conteúdos, receitas abertas e a comunidade.</p></div>
+    <div class="card persona"><span class="emoji">🌿</span><div class="who">Paciente</div><h3>Paciente de consulta</h3><p><b>Você convida</b> pelo painel. Além de tudo da aluna, recebe o "Meu Acompanhamento": diário, cardápio, metas, exames e chat com você.</p></div>
+    <div class="card persona"><span class="emoji">👩‍⚕️</span><div class="who">Você</div><h3>Dra. Adriana</h3><p>Painel completo: pacientes, semáforo, cardápios, conteúdos, cursos, campanhas, notificações e relatórios.</p></div>
+    <div class="card persona"><span class="emoji">🗂️</span><div class="who">Opcional</div><h3>Secretária</h3><p>Só se você quiser. Pode cuidar de agenda e mensagens administrativas, <b>sem ver nenhum dado clínico</b>.</p></div>
+  </div>
+</section>
+
+<!-- 3. MÓDULOS -->
+<section id="modulos">
+  <div class="sec-head">
+    <div class="sec-num">03</div>
+    <h2>As funcionalidades, <em class="acc">passo a passo</em></h2>
+    <p>Organizadas por tema. Cada uma mostra de onde veio a ideia e como vai funcionar na prática.</p>
+  </div>
+
+  <!-- M1 Conteúdo -->
+  <article class="module" data-mod="conteudo" data-title="Cursos, aulas e conteúdo">
+    <div class="module-top">
+      <div class="module-title"><div class="m-ico">🎓</div><div><h3>Cursos, aulas e conteúdo</h3><p class="sub">Cursos gratuitos (e pagos no futuro), aulas gravadas, PDFs e seus conteúdos.</p></div></div>
+      <div class="tags"><span class="tag pedido">★ Pedido seu</span><span class="tag pronto">✓ Já pronto</span></div>
+    </div>
+    <div class="module-body single">
+      <div>
+        <div class="steps-title">Como funciona</div>
+        <ol class="steps">
+          <li><div>Você grava a aula e sobe no YouTube como <b>"não listado"</b><span>Ninguém encontra no YouTube; só quem está no app assiste.</span></div></li>
+          <li><div>No painel, cria o curso → módulos → aulas e cola o link do vídeo<span>Pode anexar PDFs em cada aula (guias, e-books, planilhas).</span></div></li>
+          <li><div>Escolhe se o curso é <b>gratuito</b> ou <b>pago</b><span>Começamos só com gratuitos. Os pagos já ficam prontos para quando você quiser vender.</span></div></li>
+          <li><div>A aluna assiste, marca como concluída e vê o progresso<span>Também pode favoritar aulas, fazer anotações e receber certificado ao concluir.</span></div></li>
+          <li><div>Um espaço de <b>Materiais</b> reúne todos os PDFs num lugar só<span>Fácil de achar depois, sem precisar lembrar em qual aula estava.</span></div></li>
+        </ol>
+      </div>
+    </div>
+    <div class="validate"></div>
+  </article>
+
+  <!-- M2 Tela Hoje -->
+  <article class="module" data-mod="hoje" data-title="Tela &quot;Hoje&quot; (diário da paciente)">
+    <div class="module-top">
+      <div class="module-title"><div class="m-ico">☀️</div><div><h3>Tela "Hoje": o diário da paciente</h3><p class="sub">Uma tela só, com o dia dela, preenchida com poucos toques.</p></div></div>
+      <div class="tags"><span class="tag pedido">★ Fotos das refeições</span><span class="tag sugestao">✦ Sintomas, água, intestino, ciclo</span></div>
+    </div>
+    <div class="module-body">
+      <div>
+        <div class="steps-title">Como funciona</div>
+        <ol class="steps">
+          <li><div>A paciente abre o app e cai direto na tela <b>"Hoje"</b><span>Sem menus para procurar. Tudo do dia está ali.</span></div></li>
+          <li><div>Marca cada refeição feita (✓) e, se quiser, <b>tira a foto do prato</b><span>Café, lanche, almoço, lanche, jantar e ceia; você define quais aparecem para cada paciente.</span></div></li>
+          <li><div>Toca nos copos de <b>água</b> conforme bebe<span>A meta de água é definida por você.</span></div></li>
+          <li><div>Registra como se sente com carinhas: <b>inchaço, energia, sono e humor</b><span>Leva 10 segundos. É isso que você vai cruzar com a alimentação.</span></div></li>
+          <li><div><b>Intestino</b> pela escala de Bristol (com desenhos) e <b>exercício</b> do dia</div></li>
+          <li><div><b>Ciclo menstrual ou sintomas da menopausa</b> (fogachos, TPM), para quem se aplica<span>Muito relevante para o seu público de mulheres 30+.</span></div></li>
+          <li><div>Funciona até <b>sem internet</b> e sincroniza depois</div></li>
+        </ol>
+        <div class="why"><b>Por que numa tela só:</b> se preencher o diário der trabalho, a paciente desiste na primeira semana. Poucos toques mantêm a adesão, e adesão é o que gera resultado.</div>
+      </div>
+      <div>
+        <div class="phone" aria-hidden="true"><div class="screen"><div class="notch"></div><div class="sc">
+          <div class="sc-h"><div><small>Quinta, 19 de setembro</small><br><b>Bom dia, Maria ☀️</b></div></div>
+          <div class="sc-card"><div class="sc-label">Refeições</div>
+            <div class="meal"><span><i class="chk done">✓</i>Café da manhã</span><span class="cam">📷</span></div>
+            <div class="meal"><span><i class="chk done">✓</i>Lanche da manhã</span><span class="cam">📷</span></div>
+            <div class="meal"><span><i class="chk"></i>Almoço</span><span class="cam">📷</span></div>
+            <div class="meal"><span><i class="chk"></i>Jantar</span><span class="cam">📷</span></div>
+          </div>
+          <div class="sc-card"><div class="sc-label">Água · 5 de 8 copos</div><div class="water"><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i class="f"></i><i></i><i></i><i></i></div></div>
+          <div class="sc-card"><div class="sc-label">Como você está?</div>
+            <div class="faces"><span>Inchaço</span><span class="r"><em>😣</em><em class="s">😐</em><em>🙂</em></span></div>
+            <div class="faces"><span>Energia</span><span class="r"><em>😴</em><em>😐</em><em class="s">⚡</em></span></div>
+            <div class="faces"><span>Sono</span><span class="r"><em>😣</em><em>😐</em><em class="s">😌</em></span></div>
+          </div>
+          <div class="sc-card" style="display:flex;justify-content:space-between;align-items:center"><span>🔥 12 dias seguidos</span><span style="color:var(--gold-d);font-weight:700">Continue!</span></div>
+        </div>
+        <div class="tabbar"><div class="a"><i>☀️</i>Hoje</div><div><i>🥗</i>Cardápio</div><div><i>📈</i>Evolução</div><div><i>🎓</i>Cursos</div><div><i>💬</i>Chat</div></div>
+        </div></div>
+      </div>
+    </div>
+    <div class="validate"></div>
+  </article>
+
+  <!-- M3 Cardápio -->
+  <article class="module" data-mod="cardapio" data-title="Cardápio, lista de compras e substituições">
+    <div class="module-top">
+      <div class="module-title"><div class="m-ico">🥗</div><div><h3>Cardápio, lista de compras e substituições</h3><p class="sub">Integrado ao WebDiet, que você já usa, para você não trabalhar em dobro.</p></div></div>
+      <div class="tags"><span class="tag pedido">★ Cardápio e lista com fotos</span><span class="tag sugestao">✦ Substituições</span></div>
+    </div>
+    <div class="module-body single">
+      <div>
+        <div class="steps-title">Como funciona (proposta)</div>
+        <ol class="steps">
+          <li><div>Você continua montando o cardápio no <b>WebDiet</b>, como já faz<span>Nada muda na sua rotina de consulta.</span></div></li>
+          <li><div>Exporta o PDF e envia para a paciente pelo painel do app<span>Ela vê o cardápio bonito no celular, sempre à mão, com histórico dos anteriores.</span></div></li>
+          <li><div>Para a <b>lista de compras com fotos</b>, criamos um <b>banco de alimentos</b> com foto de cada item<span>Você monta <b>listas-modelo</b> uma vez (ex.: "Lista anti-inflamatória", "Lista low carb") e envia para cada paciente com 1 clique, ajustando o que quiser.</span></div></li>
+          <li><div>A paciente usa a lista no mercado: marca o que já pegou, agrupado por seção (hortifrúti, açougue, mercearia…)</div></li>
+          <li><div>Cada alimento pode ter <b>substituições</b>: "sem abacate? use 1 col. de azeite"<span>Você cadastra uma vez e vale para todas as pacientes.</span></div></li>
+        </ol>
+        <div class="note"><b>Ponto para você decidir (pergunta 1):</b> como o cardápio vem do WebDiet em PDF, o app não consegue "ler" os alimentos para gerar a lista de compras sozinho. Por isso propomos as listas-modelo. A alternativa seria montar o cardápio direto no app, mas isso significaria fazer duas vezes o mesmo trabalho.</div>
+      </div>
+    </div>
+    <div class="validate"></div>
+  </article>
+
+  <!-- M4 Receitas -->
+  <article class="module" data-mod="receitas" data-title="Receitas com filtros">
+    <div class="module-top">
+      <div class="module-title"><div class="m-ico">🍲</div><div><h3>Receitas com filtros inteligentes</h3><p class="sub">Biblioteca de receitas suas, que respeita as restrições de cada paciente.</p></div></div>
+      <div class="tags"><span class="tag pedido">★ Receitas</span><span class="tag sugestao">✦ Filtros e alergias</span></div>
+    </div>
+    <div class="module-body single">
+      <div>
+        <div class="steps-title">Como funciona</div>
+        <ol class="steps">
+          <li><div>Você cadastra a receita com foto, ingredientes, modo de preparo e vídeo (opcional)</div></li>
+          <li><div>Marca as etiquetas: <b>sem glúten, sem lactose, vegana, low carb, anti-inflamatória</b>…</div></li>
+          <li><div>A paciente filtra por etiqueta, tipo de refeição ou tempo de preparo</div></li>
+          <li><div><b>Proteção automática:</b> se o perfil dela diz "alergia a amendoim", essas receitas nem aparecem<span>Mais que conveniência: é segurança.</span></div></li>
+          <li><div>Ela pode favoritar e adicionar os ingredientes direto à lista de compras</div></li>
+        </ol>
+      </div>
+    </div>
+    <div class="validate"></div>
+  </article>
+
+  <!-- M5 Saúde e metas -->
+  <article class="module" data-mod="saude" data-title="Saúde, metas, evolução e exames">
+    <div class="module-top">
+      <div class="module-title"><div class="m-ico">📈</div><div><h3>Saúde, metas, evolução e exames</h3><p class="sub">O histórico da paciente, com gráficos e seus comentários.</p></div></div>
+      <div class="tags"><span class="tag pedido">★ Exames e metas</span><span class="tag sugestao">✦ Gráficos e fotos de progresso</span></div>
+    </div>
+    <div class="module-body single">
+      <div>
+        <div class="steps-title">Como funciona</div>
+        <ol class="steps">
+          <li><div><b>Pedido de exames:</b> você anexa o pedido e a paciente recebe uma notificação</div></li>
+          <li><div>A paciente envia os <b>resultados</b> (foto ou PDF) pelo app</div></li>
+          <li><div>Você escreve <b>sua interpretação</b> ali mesmo, e ela fica guardada junto do exame<span>Conversa direto com a proposta do site: "exames normais, mas o corpo não está".</span></div></li>
+          <li><div><b>Metas</b> de peso, medidas e hábitos (ex.: "3 litros de água", "dormir às 23h"), que você define junto com ela</div></li>
+          <li><div><b>Gráficos de evolução</b> de peso, medidas e % de gordura, lançados por você na consulta ou por ela em casa</div></li>
+          <li><div><b>Fotos de progresso</b> (frente/lado), só se a paciente quiser, com comparação "antes e agora" lado a lado<span>Privadas: só ela e você veem.</span></div></li>
+        </ol>
+      </div>
+    </div>
+    <div class="validate"></div>
+  </article>
+
+  <!-- M6 Comunicação -->
+  <article class="module" data-mod="comunicacao" data-title="Chat, lembretes, campanhas e notificações">
+    <div class="module-top">
+      <div class="module-title"><div class="m-ico">💬</div><div><h3>Chat, lembretes, campanhas e notificações</h3><p class="sub">Comunicação com cada paciente e com todas de uma vez.</p></div></div>
+      <div class="tags"><span class="tag pedido">★ Chat, e-mail e push</span><span class="tag pronto">✓ Já pronto</span><span class="tag sugestao">✦ Lembretes</span></div>
+    </div>
+    <div class="module-body single">
+      <div>
+        <div class="steps-title">Como funciona</div>
+        <ol class="steps">
+          <li><div><b>Chat direto</b> entre você e a paciente, para dúvidas entre consultas<span>Com horário de atendimento: fora dele, a paciente vê um aviso automático (pergunta 5).</span></div></li>
+          <li><div><b>Lembretes automáticos</b> no celular: beber água, próxima refeição, tomar suplemento<span>A paciente escolhe os horários e pode silenciar quando quiser.</span></div></li>
+          <li><div><b>Campanhas:</b> você escreve um e-mail ou notificação e escolhe para quem<span>Todas as pacientes, só as alunas, quem fez o quiz, quem está "no vermelho"…</span></div></li>
+          <li><div><b>Automações:</b> mensagens que saem sozinhas<span>Ex.: boas-vindas no cadastro; "sentimos sua falta" após 7 dias sem abrir o app; lembrete na véspera da consulta.</span></div></li>
+          <li><div><b>Dica do dia:</b> uma frase motivacional ou dica sua, que aparece no app todo dia</div></li>
+        </ol>
+      </div>
+    </div>
+    <div class="validate"></div>
+  </article>
+
+  <!-- M7 Engajamento -->
+  <article class="module" data-mod="engajamento" data-title="Conquistas, comunidade e motivação">
+    <div class="module-top">
+      <div class="module-title"><div class="m-ico">🏅</div><div><h3>Conquistas, comunidade e motivação</h3><p class="sub">Premiar hábitos, nunca quilos.</p></div></div>
+      <div class="tags"><span class="tag sugestao">✦ Sugestão</span><span class="tag pronto">✓ Base pronta</span></div>
+    </div>
+    <div class="module-body single">
+      <div>
+        <div class="steps-title">Como funciona</div>
+        <ol class="steps">
+          <li><div><b>Selos de conquista</b> por hábitos: "7 dias de diário", "meta de água da semana", "1º curso concluído"</div></li>
+          <li><div><b>Sequência de dias</b> (🔥 12 dias seguidos) para incentivar a constância</div></li>
+          <li><div><b>Comunidade moderada</b> para trocar receitas e se apoiar<span>Você aprova as postagens, ou deixa livre e remove o que não quiser.</span></div></li>
+        </ol>
+        <div class="why"><b>Cuidado importante:</b> como você trabalha com comportamento alimentar, <b>não teremos ranking de peso nem conquistas por quilos perdidos</b>. Competição com o corpo pode fazer mal. O ranking público do sistema fica desligado para pacientes.</div>
+      </div>
+    </div>
+    <div class="validate"></div>
+  </article>
+
+  <!-- M8 Check-in mensal -->
+  <article class="module" data-mod="checkin" data-title="Check-in mensal (o quiz do site)">
+    <div class="module-top">
+      <div class="module-title"><div class="m-ico">🔁</div><div><h3>Check-in mensal: o quiz do site vira termômetro</h3><p class="sub">A mesma avaliação metabólica do site, refeita todo mês.</p></div></div>
+      <div class="tags"><span class="tag sugestao">✦ Sugestão nova</span></div>
+    </div>
+    <div class="module-body single">
+      <div>
+        <div class="steps-title">Como funciona</div>
+        <ol class="steps">
+          <li><div>Quem fez o quiz no site já entra no app com esse primeiro resultado salvo</div></li>
+          <li><div>Todo mês, o app convida a paciente a refazer as mesmas perguntas</div></li>
+          <li><div>Ela vê a própria evolução: <b>"seus sinais caíram de 18 para 7"</b><span>Com gráfico por área: energia, intestino, hormônios, pele e cabelo…</span></div></li>
+          <li><div>Você vê o mesmo gráfico no painel, antes da consulta</div></li>
+        </ol>
+        <div class="why"><b>Por que é forte:</b> é motivação para a paciente e a <b>melhor prova de resultado</b> que você pode ter. Mostra melhora além da balança, que é exatamente a proposta do seu trabalho.</div>
+      </div>
+    </div>
+    <div class="validate"></div>
+  </article>
+
+  <!-- M9 Dia a dia -->
+  <article class="module" data-mod="praticidade" data-title="Praticidade: comer fora e macros">
+    <div class="module-top">
+      <div class="module-title"><div class="m-ico">🍽️</div><div><h3>Praticidade: "vou comer fora" e calculadora</h3><p class="sub">Ajuda nas situações em que a paciente mais se perde.</p></div></div>
+      <div class="tags"><span class="tag sugestao">✦ Sugestão</span></div>
+    </div>
+    <div class="module-body single">
+      <div>
+        <div class="steps-title">Como funciona</div>
+        <ol class="steps">
+          <li><div><b>Guias "vou comer fora"</b> escritos por você: japonês, pizzaria, churrascaria, lanchonete, delivery<span>Começa simples, como conteúdo, e reforça sua autoridade.</span></div></li>
+          <li><div><b>Calculadora de porções/macros</b>, disponível só para as pacientes que você liberar<span>Veja o próximo item.</span></div></li>
+        </ol>
+      </div>
+    </div>
+    <div class="validate"></div>
+  </article>
+
+  <!-- M10 Recursos por paciente -->
+  <article class="module" data-mod="personalizacao" data-title="Perfil e recursos liberados por paciente">
+    <div class="module-top">
+      <div class="module-title"><div class="m-ico">🎛️</div><div><h3>Perfil e recursos liberados por paciente</h3><p class="sub">Cada paciente vê só o que faz bem para ela.</p></div></div>
+      <div class="tags"><span class="tag pedido">★ Perfil e notificações</span><span class="tag sugestao">✦ Recursos por paciente</span></div>
+    </div>
+    <div class="module-body single">
+      <div>
+        <div class="steps-title">Como funciona</div>
+        <ol class="steps">
+          <li><div>Perfil com <b>restrições, alergias e preferências</b>, preenchido no primeiro acesso e revisado por você</div></li>
+          <li><div>Na ficha de cada paciente, você <b>liga e desliga recursos</b><span>Ex.: esconder gráfico de peso ou calculadora de macros para quem tem relação difícil com números.</span></div></li>
+          <li><div>A paciente escolhe <b>quais notificações</b> quer receber, e em que horário</div></li>
+        </ol>
+      </div>
+    </div>
+    <div class="validate"></div>
+  </article>
+
+  <!-- M11 Agenda e financeiro -->
+  <article class="module" data-mod="agenda" data-title="Agendamento e financeiro">
+    <div class="module-top">
+      <div class="module-title"><div class="m-ico">📅</div><div><h3>Agendamento e financeiro</h3><p class="sub">Consultas e pagamentos organizados.</p></div></div>
+      <div class="tags"><span class="tag pedido">★ Financeiro</span><span class="tag sugestao">✦ Agendamento</span></div>
+    </div>
+    <div class="module-body single">
+      <div>
+        <div class="steps-title">Como funciona</div>
+        <ol class="steps">
+          <li><div>A paciente vê seus <b>horários livres</b> e pede um horário<span>Você (ou a secretária) confirma. Lembrete automático na véspera.</span></div></li>
+          <li><div><b>Histórico de pagamentos</b> e planos contratados por paciente</div></li>
+          <li><div>No futuro: venda de cursos pagos e planos de acompanhamento direto no app, com Pix e cartão</div></li>
+        </ol>
+      </div>
+    </div>
+    <div class="validate"></div>
+  </article>
+</section>
+
+<!-- 4. SEMÁFORO -->
+<section id="semaforo">
+  <div class="sec-head">
+    <div class="sec-num">04</div>
+    <h2>Seu painel: <em class="acc">o semáforo das pacientes</em></h2>
+    <p>Ao abrir o painel, você vê todas as pacientes de uma vez, cada uma com uma cor. Em segundos você sabe quem está bem e quem precisa de você. As regras abaixo são uma sugestão; você ajusta os prazos na pergunta 3.</p>
+  </div>
+
+  <div class="lights">
+    <div class="light g"><div class="dot">🟢</div><h4>Verde: tudo bem</h4>
+      <ul><li>Registrou o diário nos últimos 2 dias</li><li>Sintomas estáveis ou melhorando</li><li>Seguindo o cardápio na maior parte da semana</li></ul>
+      <div class="act"><b>O que fazer:</b> nada. O app parabeniza a paciente sozinho.</div></div>
+    <div class="light y"><div class="dot">🟡</div><h4>Amarelo: atenção</h4>
+      <ul><li>3 a 6 dias sem registrar nada</li><li>Seguiu menos da metade do cardápio na semana</li><li>Um sintoma piorou (ex.: inchaço subiu)</li></ul>
+      <div class="act"><b>O que fazer:</b> o app manda um lembrete gentil. Você pode mandar uma mensagem rápida.</div></div>
+    <div class="light r"><div class="dot">🔴</div><h4>Vermelho: precisa de você</h4>
+      <ul><li>7 dias ou mais sem abrir o app</li><li>Sintomas piorando por 2 semanas seguidas</li><li>Retorno de consulta atrasado</li></ul>
+      <div class="act"><b>O que fazer:</b> você recebe um alerta e decide: mensagem, ligação ou antecipar a consulta.</div></div>
+  </div>
+
+  <div class="board" aria-label="Exemplo do painel">
+    <div class="board-h"><b>Minhas pacientes</b><div class="counts"><span style="background:rgba(78,154,91,.14);color:#2F6B3A">🟢 18</span><span style="background:rgba(217,165,32,.16);color:#8A6508">🟡 5</span><span style="background:rgba(196,85,63,.14);color:#8E3321">🔴 2</span></div></div>
+    <div class="row head"><span></span><span>Paciente</span><span>Último registro</span><span class="hide-m">Adesão</span><span class="hide-m">Motivo</span></div>
+    <div class="row"><span class="s" style="background:var(--red)"></span><span><b>Juliana M.</b><br><small>Retorno: atrasado</small></span><span>há 9 dias</span><span class="hide-m">—</span><span class="why-r hide-m">Não abre o app há 9 dias</span></div>
+    <div class="row"><span class="s" style="background:var(--yellow)"></span><span><b>Carla S.</b><br><small>Retorno: 02/10</small></span><span>há 4 dias</span><span class="hide-m">45%</span><span class="why-r hide-m">Inchaço piorou esta semana</span></div>
+    <div class="row"><span class="s" style="background:var(--green)"></span><span><b>Maria A.</b><br><small>Retorno: 10/10</small></span><span>hoje</span><span class="hide-m">86%</span><span class="why-r hide-m">Energia melhorando 📈</span></div>
+  </div>
+
+  <article class="module" data-mod="painel" data-title="Painel com semáforo e resumo pré-consulta" style="margin-top:22px">
+    <div class="module-top">
+      <div class="module-title"><div class="m-ico">🩺</div><div><h3>Resumo pré-consulta automático</h3><p class="sub">Você abre a consulta já sabendo tudo o que aconteceu.</p></div></div>
+      <div class="tags"><span class="tag pedido">★ Acompanhar todas</span><span class="tag sugestao">✦ Semáforo e resumo</span></div>
+    </div>
+    <div class="module-body single">
+      <div>
+        <div class="steps-title">Como funciona</div>
+        <ol class="steps">
+          <li><div>Antes da consulta, você abre a ficha da paciente e toca em <b>"Resumo do período"</b></div></li>
+          <li><div>O app junta tudo desde a última consulta<span>Adesão ao cardápio, média de cada sintoma, peso e medidas, fotos das refeições, exames novos, check-in mensal e as dúvidas que ela mandou no chat.</span></div></li>
+          <li><div>Os pontos de atenção aparecem destacados<span>Ex.: "inchaço alto nos dias com mais de 2 refeições fora de casa".</span></div></li>
+          <li><div>Você anota a conduta da consulta ali mesmo e o histórico fica completo</div></li>
+        </ol>
+      </div>
+    </div>
+    <div class="validate"></div>
+  </article>
+</section>
+
+<!-- 5. PRIVACIDADE -->
+<section id="privacidade">
+  <div class="sec-head">
+    <div class="sec-num">05</div>
+    <h2>Privacidade e segurança: <em class="acc">dados de saúde</em></h2>
+    <p>Peso, exames, sintomas e fotos são dados sensíveis pela LGPD. O app foi pensado com isso desde o início.</p>
+  </div>
+  <div class="grid g3">
+    <div class="card"><h3>🔐 Acesso</h3><ul><li>Login com senha forte e, para você, verificação em duas etapas</li><li>Cada paciente só vê os próprios dados</li><li>Secretária nunca vê dados clínicos</li></ul></div>
+    <div class="card"><h3>📷 Fotos e exames</h3><ul><li>Guardados em área privada, fora do alcance de links públicos</li><li>Fotos de progresso só se a paciente quiser</li></ul></div>
+    <div class="card"><h3>📝 Transparência</h3><ul><li>Termo de consentimento no primeiro acesso</li><li>Registro de quem acessou o quê</li><li>A paciente pode baixar ou pedir a exclusão dos dados</li></ul></div>
+  </div>
+  <article class="module" data-mod="privacidade" data-title="Privacidade e segurança" style="margin-top:18px;padding:22px 30px">
+    <div class="validate" style="margin-top:0;padding-top:0;border-top:0"></div>
+  </article>
+</section>
+
+<!-- 6. ETAPAS -->
+<section id="etapas">
+  <div class="sec-head">
+    <div class="sec-num">06</div>
+    <h2>Em quais etapas <em class="acc">vamos construir</em></h2>
+    <p>O app entra no ar já na etapa 1, com valor real para as pacientes. As próximas etapas chegam como atualizações, sem tirar nada do ar e sem precisar reinstalar.</p>
+  </div>
+  <div class="road">
+    <div class="stage first"><div class="n"><small>Etapa</small>1</div><div><h3>Lançamento</h3><p>O app com a sua marca, no ar, com conteúdo e acompanhamento básico.</p>
+      <ul><li>Sua identidade visual</li><li>Botão "Entrar" no site</li><li>Cursos gratuitos e aulas</li><li>PDFs e materiais</li><li>Chat com você</li><li>Notificações e e-mails</li><li>Perfil com restrições e alergias</li><li>Evolução com gráficos</li><li>Exames com seus comentários</li><li>Metas</li></ul></div></div>
+    <div class="stage"><div class="n"><small>Etapa</small>2</div><div><h3>Alimentação</h3><p>Tudo sobre o que a paciente come.</p>
+      <ul><li>Cardápio do WebDiet no app</li><li>Banco de alimentos com fotos</li><li>Listas de compras</li><li>Substituições</li><li>Receitas com filtros e alergias</li></ul></div></div>
+    <div class="stage"><div class="n"><small>Etapa</small>3</div><div><h3>Dia a dia</h3><p>O acompanhamento diário e o seu painel inteligente.</p>
+      <ul><li>Tela "Hoje"</li><li>Fotos das refeições</li><li>Sintomas, água, intestino, ciclo</li><li>Lembretes</li><li>Semáforo 🟢🟡🔴</li><li>Resumo pré-consulta</li><li>Conquistas de hábito</li></ul></div></div>
+    <div class="stage"><div class="n"><small>Etapa</small>4</div><div><h3>Extras</h3><p>Para crescer e automatizar ainda mais.</p>
+      <ul><li>Agendamento</li><li>Pagamentos e cursos pagos</li><li>Check-in mensal (quiz)</li><li>"Vou comer fora"</li><li>Calculadora de macros</li><li>Comunidade</li></ul></div></div>
+  </div>
+  <article class="module" data-mod="etapas" data-title="Ordem das etapas" style="margin-top:18px;padding:22px 30px">
+    <div class="validate" style="margin-top:0;padding-top:0;border-top:0"></div>
+  </article>
+</section>
+
+<!-- 7. PERGUNTAS -->
+<section id="perguntas">
+  <div class="sec-head">
+    <div class="sec-num">07</div>
+    <h2>Perguntas <em class="acc">para você</em></h2>
+    <p>Suas respostas definem os detalhes. Onde tiver "recomendado", é a nossa sugestão, mas a decisão é sua.</p>
+  </div>
+  <div id="questions"></div>
+</section>
+
+<!-- ENVIO -->
+<div class="send" id="enviar">
+  <h2>Pronto para enviar?</h2>
+  <p>Suas aprovações, comentários e respostas vão numa mensagem organizada. Se ainda faltar algo, tudo bem: envie assim mesmo e completamos depois.</p>
+  <div class="summary" id="summary"></div>
+  <button class="btn wpp" type="button" onclick="sendWhatsApp()">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.5 14.4c-.3-.1-1.8-.9-2-1s-.5-.1-.7.1-.8 1-1 1.2-.4.2-.7.1a8.2 8.2 0 0 1-4-3.5c-.3-.5.3-.5.9-1.6.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6a1.2 1.2 0 0 0-.9.4 3.6 3.6 0 0 0-1.1 2.7 6.3 6.3 0 0 0 1.3 3.3 14.4 14.4 0 0 0 5.5 4.9c2 .9 2.8.9 3.8.8a3.3 3.3 0 0 0 2.2-1.5 2.7 2.7 0 0 0 .2-1.5c-.1-.2-.3-.3-.6-.4M12 21.8a9.8 9.8 0 0 1-5-1.4l-.4-.2-3.7 1 1-3.6-.2-.4A9.8 9.8 0 1 1 12 21.8M20.5 3.5A11.8 11.8 0 0 0 1.9 17.7L.2 24l6.4-1.7A11.8 11.8 0 0 0 24 12a11.7 11.7 0 0 0-3.5-8.5"/></svg>
+    Enviar pelo WhatsApp
+  </button>
+  <button class="btn ghost" type="button" onclick="copyAnswers()">Copiar respostas</button>
+</div>
+
+<footer>Proposta confidencial preparada para a Dra. Adriana Orneles · Nutricionista CRN 9.14965 · 2026</footer>
+</main>
+
+<div class="toast" id="toast" role="status"></div>
+
+<script>
+const QUESTIONS = [
+  { id:'webdiet', title:'Cardápio: como trazer do WebDiet?', ctx:'Você monta os cardápios no WebDiet. Precisamos decidir como eles chegam à paciente no app.', options:[
+    {v:'pdf', t:'Exporto o PDF do WebDiet e envio pelo app', s:'Zero retrabalho. A lista de compras vem das listas-modelo.', rec:true},
+    {v:'app', t:'Prefiro montar o cardápio direto no app', s:'Permite gerar a lista de compras automaticamente, mas é trabalho em dobro.'},
+    {v:'webdiet-app', t:'Minhas pacientes já usam o app do próprio WebDiet para o cardápio', s:'Aí o nosso app foca no resto (diário, conteúdo, acompanhamento).'}
+  ]},
+  { id:'secretaria', title:'A secretária terá acesso?', ctx:'Ela nunca verá dados clínicos (exames, peso, sintomas, fotos, diário).', options:[
+    {v:'agenda-msg', t:'Sim: agenda e mensagens administrativas'},
+    {v:'agenda', t:'Sim, mas só a agenda'},
+    {v:'nao', t:'Não, por enquanto só eu', rec:true}
+  ]},
+  { id:'semaforo', title:'Os prazos do semáforo estão bons?', ctx:'Sugestão: amarelo com 3 a 6 dias sem registro; vermelho com 7 dias ou mais, sintomas piorando por 2 semanas ou retorno atrasado.', options:[
+    {v:'ok', t:'Estão bons assim', rec:true},
+    {v:'ajustar', t:'Quero ajustar (escreva abaixo)'}
+  ]},
+  { id:'fotos', title:'Fotos das refeições: como você quer acompanhar?', ctx:'Isso define quanto do seu tempo elas vão tomar.', options:[
+    {v:'resumo', t:'Vejo no resumo pré-consulta, sem notificação a cada foto', rec:true},
+    {v:'comentar', t:'Quero ver e comentar as fotos durante a semana'},
+    {v:'sem', t:'Prefiro não ter fotos das refeições'}
+  ]},
+  { id:'chat', title:'Chat: qual será o seu horário de resposta?', ctx:'Fora do horário, a paciente vê um aviso automático. Isso protege o seu tempo livre.', options:[
+    {v:'comercial', t:'Dias úteis, horário comercial', rec:true},
+    {v:'1x', t:'Respondo uma vez por dia, em horário fixo'},
+    {v:'livre', t:'Sem restrição de horário'}
+  ]},
+  { id:'sensiveis', title:'Peso e calculadora de macros: ligados ou desligados por padrão?', ctx:'Você poderá mudar para cada paciente depois. A pergunta é qual o padrão ao convidar alguém novo.', options:[
+    {v:'peso-on', t:'Gráfico de peso ligado, calculadora desligada', rec:true},
+    {v:'tudo-on', t:'Tudo ligado'},
+    {v:'tudo-off', t:'Tudo desligado; eu libero quando fizer sentido'}
+  ]},
+  { id:'agenda', title:'Como você agenda as consultas hoje?', ctx:'Para o agendamento pelo app se encaixar na sua rotina.', options:[
+    {v:'wpp', t:'Pelo WhatsApp, manualmente'},
+    {v:'google', t:'Google Agenda'},
+    {v:'webdiet', t:'Pela agenda do WebDiet'},
+    {v:'outro', t:'Outro (escreva abaixo)'}
+  ]},
+  { id:'suplementos', title:'Você prescreve suplementos com frequência?', ctx:'Se sim, criamos lembretes de horário de suplemento por paciente.', options:[
+    {v:'sim', t:'Sim, frequentemente'},
+    {v:'as-vezes', t:'Às vezes'},
+    {v:'nao', t:'Raramente'}
+  ]},
+  { id:'comunidade', title:'Quer uma comunidade entre as pacientes?', ctx:'Um espaço para trocarem receitas e se apoiarem.', options:[
+    {v:'moderada', t:'Sim, com minha aprovação antes de publicar'},
+    {v:'livre', t:'Sim, livre (removo o que não quiser)'},
+    {v:'depois', t:'Deixar para depois', rec:true}
+  ]},
+  { id:'conteudo', title:'Que conteúdo você já tem pronto para o lançamento?', ctx:'Para a etapa 1 já estrear com cursos e materiais.', multi:true, options:[
+    {v:'aulas', t:'Aulas ou cursos já gravados'},
+    {v:'pdfs', t:'PDFs, e-books ou guias'},
+    {v:'receitas', t:'Receitas'},
+    {v:'gravar', t:'Ainda vou gravar/produzir'}
+  ]},
+  { id:'nome', title:'Nome do app e endereço', ctx:'Sugestões de endereço: app.draadrianaorneles.com.br ou membros.draadrianaorneles.com.br. O nome aparece no ícone do celular.', text:true, placeholder:'Ex.: "Reative", "Dra. Adriana", "Nutri Adriana"… e o endereço de preferência' },
+  { id:'extra', title:'Algo que não apareceu aqui?', ctx:'Qualquer ideia, preocupação ou prioridade.', text:true, placeholder:'Escreva livremente…' }
+];
+
+const STORE = 'proposta-app-ucecek0e-v1';
+let state = { mods:{}, qs:{} };
+try { state = Object.assign(state, JSON.parse(localStorage.getItem(STORE) || '{}')); } catch(e) {}
+function save(){ try { localStorage.setItem(STORE, JSON.stringify(state)); } catch(e) {} updateProgress(); }
+
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+// Monta a validação de cada módulo
+document.querySelectorAll('.module[data-mod]').forEach(m => {
+  const id = m.dataset.mod;
+  const box = m.querySelector('.validate');
+  const cur = state.mods[id] || {};
+  box.innerHTML = `
+    <div class="validate-row">
+      <span>Sua avaliação:</span>
+      <button type="button" class="vbtn ok ${cur.status==='ok'?'on':''}" data-v="ok">✓ Aprovo</button>
+      <button type="button" class="vbtn adj ${cur.status==='adj'?'on':''}" data-v="adj">✎ Quero ajustar</button>
+      <textarea class="vnote ${cur.status==='adj'||cur.note?'show':''}" placeholder="O que você mudaria ou acrescentaria?">${esc(cur.note||'')}</textarea>
+    </div>`;
+  const note = box.querySelector('textarea');
+  box.querySelectorAll('.vbtn').forEach(b => b.addEventListener('click', () => {
+    const v = b.dataset.v;
+    const st = state.mods[id] = state.mods[id] || {};
+    st.status = st.status === v ? '' : v;
+    box.querySelectorAll('.vbtn').forEach(x => x.classList.toggle('on', x.dataset.v === st.status));
+    note.classList.toggle('show', st.status === 'adj' || !!st.note);
+    if (st.status === 'adj') note.focus();
+    save();
+  }));
+  note.addEventListener('input', () => { (state.mods[id] = state.mods[id] || {}).note = note.value; save(); });
+});
+
+// Monta as perguntas
+const qWrap = document.getElementById('questions');
+QUESTIONS.forEach((q, i) => {
+  const cur = state.qs[q.id] || {};
+  const el = document.createElement('div');
+  el.className = 'q';
+  let html = `<div class="qn">Pergunta ${i+1}</div><h3>${q.title}</h3><p class="ctx">${q.ctx}</p>`;
+  if (q.options) {
+    const type = q.multi ? 'checkbox' : 'radio';
+    const chosen = q.multi ? (cur.choice || []) : [cur.choice];
+    html += '<div class="opts">' + q.options.map(o => `
+      <label class="opt ${chosen.includes(o.v)?'sel':''}">
+        <input type="${type}" name="q-${q.id}" value="${o.v}" ${chosen.includes(o.v)?'checked':''}>
+        <div>${o.t}${o.rec?'<span class="rec">Recomendado</span>':''}${o.s?`<small>${o.s}</small>`:''}</div>
+      </label>`).join('') + '</div>';
+    html += `<textarea placeholder="Comentário (opcional)">${esc(cur.note||'')}</textarea>`;
+  } else {
+    html += `<textarea placeholder="${q.placeholder||''}">${esc(cur.note||'')}</textarea>`;
+  }
+  el.innerHTML = html;
+  qWrap.appendChild(el);
+
+  el.querySelectorAll('input').forEach(inp => inp.addEventListener('change', () => {
+    const st = state.qs[q.id] = state.qs[q.id] || {};
+    if (q.multi) st.choice = [...el.querySelectorAll('input:checked')].map(x => x.value);
+    else st.choice = inp.value;
+    el.querySelectorAll('.opt').forEach(o => o.classList.toggle('sel', o.querySelector('input').checked));
+    save();
+  }));
+  el.querySelector('textarea').addEventListener('input', e => { (state.qs[q.id] = state.qs[q.id] || {}).note = e.target.value; save(); });
+});
+
+function counts(){
+  const mods = [...document.querySelectorAll('.module[data-mod]')];
+  const ok = mods.filter(m => state.mods[m.dataset.mod]?.status === 'ok').length;
+  const adj = mods.filter(m => state.mods[m.dataset.mod]?.status === 'adj').length;
+  const answered = QUESTIONS.filter(q => { const s = state.qs[q.id]; return s && ((Array.isArray(s.choice) ? s.choice.length : s.choice) || (s.note||'').trim()); }).length;
+  return { total: mods.length, ok, adj, answered };
+}
+
+function updateProgress(){
+  const c = counts();
+  const done = c.ok + c.adj;
+  document.getElementById('prog-text').textContent = `${done} de ${c.total} validados`;
+  document.getElementById('prog-bar').style.width = (done / c.total * 100) + '%';
+  document.getElementById('summary').innerHTML = `<span>✓ ${c.ok} aprovados</span><span>✎ ${c.adj} com ajustes</span><span>❓ ${c.answered} de ${QUESTIONS.length} perguntas</span>`;
+}
+
+function buildMessage(){
+  const L = ['*Proposta do App — respostas da Dra. Adriana*', ''];
+  L.push('*FUNCIONALIDADES*');
+  document.querySelectorAll('.module[data-mod]').forEach(m => {
+    const s = state.mods[m.dataset.mod] || {};
+    const icon = s.status === 'ok' ? '✅' : s.status === 'adj' ? '✏️' : '⬜';
+    L.push(`${icon} ${m.dataset.title.replace(/&quot;/g,'"')}`);
+    if ((s.note||'').trim()) L.push(`   ↳ ${s.note.trim()}`);
+  });
+  L.push('', '*PERGUNTAS*');
+  QUESTIONS.forEach((q, i) => {
+    const s = state.qs[q.id] || {};
+    let ans = '';
+    if (q.options) {
+      const vals = Array.isArray(s.choice) ? s.choice : (s.choice ? [s.choice] : []);
+      ans = vals.map(v => q.options.find(o => o.v === v)?.t).filter(Boolean).join('; ');
+    }
+    const note = (s.note||'').trim();
+    L.push(`${i+1}. ${q.title}`);
+    L.push(`   → ${[ans, note].filter(Boolean).join(' — ') || '(sem resposta)'}`);
+  });
+  return L.join('\n');
+}
+
+function toast(msg){ const t = document.getElementById('toast'); t.textContent = msg; t.classList.add('show'); setTimeout(() => t.classList.remove('show'), 2600); }
+
+function sendWhatsApp(){
+  window.open('https://wa.me/?text=' + encodeURIComponent(buildMessage()), '_blank', 'noopener');
+}
+
+async function copyAnswers(){
+  const text = buildMessage();
+  try { await navigator.clipboard.writeText(text); toast('Respostas copiadas ✓'); }
+  catch(e) {
+    const ta = document.createElement('textarea'); ta.value = text; document.body.appendChild(ta); ta.select();
+    try { document.execCommand('copy'); toast('Respostas copiadas ✓'); } catch(_) { toast('Não foi possível copiar'); }
+    ta.remove();
+  }
+}
+
+updateProgress();
+</script>
+</body>
+</html>
