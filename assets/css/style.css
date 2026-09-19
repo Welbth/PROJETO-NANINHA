@@ -143,3 +143,83 @@ body {
         .animate-fade-in-up {
             animation: fade-in-up 0.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
         }
+        /* Reserva o espaço dos ícones antes do Iconify carregar (evita "pulos" no layout) */
+        iconify-icon {
+            display: inline-block;
+            width: 1em;
+            height: 1em;
+        }
+
+        /* Menu Mobile: botão hambúrguer que vira "X" */
+        .menu-line {
+            position: absolute;
+            left: 50%;
+            width: 20px;
+            height: 1.5px;
+            margin-left: -10px;
+            border-radius: 2px;
+            background: currentColor;
+            transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.2s ease;
+        }
+        .menu-line-top { transform: translateY(-6px); }
+        .menu-line-bot { transform: translateY(6px); }
+        .menu-open .menu-line-top { transform: rotate(45deg); }
+        .menu-open .menu-line-mid { opacity: 0; }
+        .menu-open .menu-line-bot { transform: rotate(-45deg); }
+
+        /* Menu Mobile: painel */
+        .mobile-menu-panel {
+            opacity: 0;
+            visibility: hidden;
+            transform: translateY(-8px) scale(0.98);
+            transform-origin: top center;
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s linear 0.3s;
+        }
+        .menu-open .mobile-menu-panel {
+            opacity: 1;
+            visibility: visible;
+            transform: translateY(0) scale(1);
+            transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), visibility 0s;
+        }
+        .mobile-menu-link {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            padding: 0.9rem 1rem;
+            border-radius: 1rem;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: #3A412E;
+            transition: background-color 0.2s ease;
+        }
+        .mobile-menu-link:hover,
+        .mobile-menu-link:active {
+            background: rgba(162, 173, 142, 0.15);
+        }
+
+        /* Checkbox de consentimento: ícone só aparece quando marcado */
+        .consent-box iconify-icon { opacity: 0; transform: scale(0.5); transition: all 0.2s ease; }
+        .peer:checked + .consent-box iconify-icon { opacity: 1; transform: scale(1); }
+
+        /* Janela da Política de Privacidade */
+        .privacy-dialog { margin: auto; border: none; overflow: hidden; }
+        .privacy-dialog::backdrop {
+            background: rgba(58, 65, 46, 0.45);
+            backdrop-filter: blur(4px);
+            -webkit-backdrop-filter: blur(4px);
+        }
+        .privacy-dialog[open] { animation: fade-in-up 0.35s cubic-bezier(0.4, 0, 0.2, 1); }
+
+        /* Links do menu não ficam escondidos atrás da barra fixa */
+        section[id] { scroll-margin-top: 5rem; }
+
+        /* Acessibilidade: quem ativa "reduzir movimento" no celular/PC vê o site sem animações contínuas */
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                transition-duration: 0.01ms !important;
+                scroll-behavior: auto !important;
+            }
+            .reveal { opacity: 1; transform: none; }
+        }

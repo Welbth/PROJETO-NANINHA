@@ -17,6 +17,50 @@ document.addEventListener('DOMContentLoaded', () => {
                 revealOnScroll.observe(reveal);
             });
 
+            // Menu Mobile
+            const nav = document.querySelector('nav');
+            const menuBtn = document.getElementById('mobile-menu-btn');
+            const mobileMenu = document.getElementById('mobile-menu');
+
+            if (nav && menuBtn && mobileMenu) {
+                const setMenu = (open) => {
+                    nav.classList.toggle('menu-open', open);
+                    menuBtn.setAttribute('aria-expanded', String(open));
+                    menuBtn.setAttribute('aria-label', open ? 'Fechar menu' : 'Abrir menu');
+                    mobileMenu.setAttribute('aria-hidden', String(!open));
+                };
+
+                menuBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    setMenu(!nav.classList.contains('menu-open'));
+                });
+
+                // Fecha ao escolher um link, ao tocar fora ou ao apertar Esc
+                mobileMenu.querySelectorAll('a').forEach(link => link.addEventListener('click', () => setMenu(false)));
+                document.addEventListener('click', (e) => {
+                    if (!nav.contains(e.target)) setMenu(false);
+                });
+                document.addEventListener('keydown', (e) => {
+                    if (e.key === 'Escape') setMenu(false);
+                });
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth >= 1024) setMenu(false);
+                });
+            }
+
+            // Vídeo inteligente: só baixa/toca quando está perto de aparecer e pausa quando sai da tela.
+            // No celular ele fica abaixo do texto, então não disputa a internet com o que aparece primeiro.
+            const heroVideo = document.querySelector('#hero-media-wrapper video');
+            if (heroVideo) {
+                new IntersectionObserver(([entry]) => {
+                    if (entry.isIntersecting) {
+                        heroVideo.play().catch(() => {});
+                    } else {
+                        heroVideo.pause();
+                    }
+                }, { rootMargin: '200px 0px' }).observe(heroVideo);
+            }
+
             // Efeito Parallax/Continuidade no Vídeo da Hero
             const heroMediaWrapper = document.getElementById('hero-media-wrapper');
             const heroDeco1 = document.getElementById('hero-deco-1');

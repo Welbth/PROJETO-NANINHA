@@ -1,35 +1,40 @@
-# Novo Site
+# Site — Dra. Adriana Orneles (Nutrição Clínica)
 
-Este diretório contém a estrutura base para a criação do seu novo site.
+Landing page estática (HTML + Tailwind CSS + JavaScript puro) com quiz de avaliação metabólica que envia os contatos por e-mail (Formspree) e direciona para o WhatsApp.
 
 ## Estrutura de Arquivos
 
-- `index.html`: O arquivo principal do seu site.
-- `assets/`: Pasta onde ficam todos os recursos estáticos.
-  - `css/`: Folhas de estilo (arquivos .css).
-  - `js/`: Scripts de lógica e interação (arquivos .js).
-  - `images/`: Imagens e ícones (você pode adicionar os arquivos SVG, JPG, PNG aqui).
+- `index.html`: a página inteira (seções, quiz e política de privacidade).
+- `assets/css/style.css`: estilos próprios (animações, efeitos de vidro, menu mobile).
+- `assets/css/tailwind.css`: CSS do Tailwind **gerado automaticamente** — não edite à mão.
+- `assets/css/tailwind.input.css`: arquivo de entrada do Tailwind.
+- `tailwind.config.js`: cores e fontes da marca.
+- `assets/js/main.js`: animações de rolagem, menu mobile, vídeo e parallax.
+- `assets/images/` e `assets/videos/`: imagens (WebP otimizado) e vídeo (MP4 comprimido).
+
+## ⚠️ Importante: ao editar classes do Tailwind
+
+O Tailwind não roda mais pelo CDN (era lento). O CSS é gerado uma vez e fica pronto no site.
+**Sempre que adicionar ou trocar classes do Tailwind no HTML**, rode:
+
+```bash
+npm install        # só na primeira vez
+npm run build:css  # gera assets/css/tailwind.css
+```
+
+Durante a edição, `npm run watch:css` atualiza o CSS automaticamente a cada alteração.
+Mudar só textos não exige rodar nada.
+
+## Mídia
+
+- Imagens: prefira **WebP** no tamanho em que aparecem na tela.
+- Vídeo do topo: 720p, H.264, sem áudio. Para comprimir um vídeo novo com o FFmpeg:
+
+```bash
+ffmpeg -i video-original.mp4 -vf "scale=720:-2" -c:v libx264 -preset veryslow -crf 23 -pix_fmt yuv420p -movflags +faststart -an assets/videos/hero_video.mp4
+```
 
 ## Como Fazer o Deploy
 
-Esta estrutura em Vanilla HTML/CSS/JS é a mais simples para se fazer deploy. Você pode hospedá-la gratuitamente em plataformas estáticas. Aqui estão algumas opções recomendadas:
-
-1. **Vercel**: 
-   - Crie uma conta no [vercel.com](https://vercel.com).
-   - Instale a CLI (`npm i -g vercel`) ou faça upload diretamente pelo site arrastando a pasta `Novo Site`.
-   - Pode também vincular um repositório GitHub para deploy automático.
-
-2. **Netlify**:
-   - Crie uma conta no [netlify.com](https://netlify.com).
-   - Arraste a pasta `Novo Site` para a área de "Drag and Drop" na aba "Sites".
-   - Ou vincule um repositório do GitHub.
-
-3. **GitHub Pages**:
-   - Suba essa pasta para um repositório no GitHub.
-   - Vá nas configurações do repositório (Settings) > Pages.
-   - Selecione a branch principal (`main` ou `master`) e salve. O site estará online em minutos.
-
-## Próximos Passos
-- Crie designs incríveis utilizando CSS puro.
-- Traga suas imagens e SVGs para a pasta `assets/images`.
-- Atualize os textos, SEO e estilos de acordo com o design que desejar!
+Hospede a pasta em qualquer serviço estático (Vercel, Netlify ou GitHub Pages). Eles já aplicam compressão e cache automaticamente.
+A pasta `node_modules/` não precisa ir para o servidor.

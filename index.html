@@ -3,22 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nutrição Clínica - Reative seu Metabolismo</title>
-    <link rel="icon" type="image/png" href="logo-adriana.png">
+    <title>Dra. Adriana Orneles | Nutrição Clínica - Reative seu Metabolismo</title>
+    <meta name="description" content="Nutrição clínica e comportamento alimentar para mulheres que sentem que o corpo parou de responder. Emagrecimento, saúde hormonal, menopausa e doenças autoimunes. Atendimento presencial em Ouro Fino/MG e online.">
+    <meta name="theme-color" content="#3A412E">
+
+    <!-- Compartilhamento (WhatsApp, Instagram, Facebook) -->
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:title" content="Dra. Adriana Orneles | Reative seu metabolismo">
+    <meta property="og:description" content="Nutrição clínica para mulheres que sentem que o corpo parou de responder. Faça a avaliação metabólica gratuita.">
+
+    <link rel="icon" type="image/png" href="assets/images/favicon.png">
+
+    <!-- No computador o vídeo aparece logo no topo: adianta o download da capa dele -->
+    <link rel="preload" as="image" href="assets/images/hero-poster.webp" media="(min-width: 1024px)">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
-
-    <!-- Tailwind CSS -->
-    <script src="https://cdn.tailwindcss.com"></script>
-    <script src="assets/js/tailwind.config.js"></script>
+    <!-- Fontes carregadas sem travar a página: o texto aparece na hora e a fonte elegante entra em seguida -->
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=Great+Vibes&display=swap">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=Great+Vibes&display=swap" rel="stylesheet" media="print" onload="this.media='all'">
+    <noscript><link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Newsreader:ital,wght@0,300;0,400;1,300;1,400&family=Great+Vibes&display=swap" rel="stylesheet"></noscript>
 
     <!-- Iconify -->
-    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js" defer></script>
 
     <link rel="stylesheet" href="assets/css/style.css">
+    <!-- Tailwind CSS (gerado por "npm run build:css" — veja o README). Fica depois do style.css de propósito: as classes do HTML têm prioridade -->
+    <link rel="stylesheet" href="assets/css/tailwind.css">
 </head>
 <body class="selection:bg-brand-sage selection:text-white relative min-h-screen flex flex-col overflow-x-hidden">
 
@@ -36,21 +49,48 @@
             <span class="font-primary text-xl tracking-tight text-brand-dark">Dra. Adriana <span class="font-accent italic font-light text-brand-sage">Orneles</span></span>
         </div>
         
-        <!-- Links (Visíveis apenas no Desktop) -->
-        <div class="hidden md:flex items-center gap-8 text-sm font-medium text-brand-dark/70">
+        <!-- Links (Visíveis apenas no Desktop, a partir de 1024px) -->
+        <div class="hidden lg:flex items-center gap-8 text-sm font-medium text-brand-dark/70">
             <a href="#especialidades" class="hover:text-brand-dark transition-colors">Especialidades</a>
             <a href="#testemunhos" class="hover:text-brand-dark transition-colors">Testemunhos</a>
             <a href="#historia" class="hover:text-brand-dark transition-colors">Minha história</a>
         </div>
         
-        <!-- Botão CTA -->
-        <a href="https://wa.me/5535998825188?text=Ol%C3%A1%20Dra.%20Adriana.%20Estou%20em%20seu%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20consulta!" target="_blank" class="bg-brand-dark text-brand-bg px-6 py-2 rounded-full text-[10px] uppercase tracking-widest font-medium btn-glow hover:bg-brand-sage transition-colors shadow-md shadow-brand-dark/10">
+        <!-- Botão CTA (Desktop) -->
+        <a href="https://wa.me/5535998825188?text=Ol%C3%A1%20Dra.%20Adriana.%20Estou%20em%20seu%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20consulta!" target="_blank" rel="noopener" class="hidden lg:inline-flex bg-brand-dark text-brand-bg px-6 py-2 rounded-full text-[10px] uppercase tracking-widest font-medium btn-glow hover:bg-brand-sage transition-colors shadow-md shadow-brand-dark/10">
             Contato
         </a>
+
+        <!-- Botão do Menu (Mobile) -->
+        <button id="mobile-menu-btn" type="button" class="lg:hidden relative w-10 h-10 -mr-2 flex items-center justify-center rounded-full text-brand-dark hover:bg-brand-dark/5 transition-colors" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobile-menu">
+            <span class="menu-line menu-line-top"></span>
+            <span class="menu-line menu-line-mid"></span>
+            <span class="menu-line menu-line-bot"></span>
+        </button>
+
+        <!-- Painel do Menu (Mobile) -->
+        <div id="mobile-menu" class="lg:hidden absolute top-full left-0 right-0 mt-3 bg-[#FBFAF7]/95 border border-brand-sage/20 rounded-3xl p-3 flex flex-col gap-1 shadow-xl shadow-brand-dark/10 mobile-menu-panel" aria-hidden="true">
+            <a href="#quiz-section" class="mobile-menu-link">
+                <iconify-icon icon="solar:clipboard-list-linear" class="text-xl text-brand-sage"></iconify-icon>
+                Avaliação gratuita
+            </a>
+            <a href="#especialidades" class="mobile-menu-link">
+                <iconify-icon icon="solar:heart-pulse-linear" class="text-xl text-brand-sage"></iconify-icon>
+                Especialidades
+            </a>
+            <a href="#testemunhos" class="mobile-menu-link">
+                <iconify-icon icon="solar:star-linear" class="text-xl text-brand-sage"></iconify-icon>
+                Testemunhos
+            </a>
+            <a href="https://wa.me/5535998825188?text=Ol%C3%A1%20Dra.%20Adriana.%20Estou%20em%20seu%20site%20e%20gostaria%20de%20mais%20informa%C3%A7%C3%B5es%20sobre%20a%20consulta!" target="_blank" rel="noopener" class="mt-2 flex items-center justify-center gap-2 bg-brand-dark text-brand-bg px-6 py-4 rounded-2xl text-xs uppercase tracking-widest font-semibold hover:bg-brand-sage transition-colors">
+                <iconify-icon icon="solar:phone-linear" class="text-lg"></iconify-icon>
+                Falar no WhatsApp
+            </a>
+        </div>
     </nav>
 
     <!-- PRIMEIRA DOBRA (HERO) -->
-    <header id="historia" class="relative z-10 w-full max-w-7xl mx-auto px-6 pt-32 pb-20 lg:pt-0 lg:pb-0 min-h-screen flex items-center">
+    <header id="historia" class="relative z-10 w-full max-w-7xl mx-auto px-6 pt-36 pb-20 lg:pt-28 lg:pb-12 min-h-screen flex items-center">
         <div class="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center w-full">
             
             <!-- Texto e Informações -->
@@ -128,12 +168,12 @@
                 
                 <!-- Logo Flutuante (Topo Direita, Frente do vídeo) -->
                 <div class="absolute -top-6 -right-6 lg:-top-8 lg:-right-10 z-30 w-32 h-32 md:w-44 md:h-44 animate-float" style="animation-delay: 1.5s;">
-                    <img src="assets/images/logo-adriana.png" alt="Logo Adriana" class="w-full h-full object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500">
+                    <img src="assets/images/logo-adriana.webp" alt="Logo Dra. Adriana Orneles" width="360" height="450" class="w-full h-full object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500">
                 </div>
 
                 <!-- O contêiner do vídeo com formato elegante (arredondamento diferenciado) -->
                 <div id="hero-media-wrapper" class="relative z-10 w-[85%] lg:w-[90%] aspect-[3/4] overflow-hidden image-mask shadow-2xl shadow-brand-dark/15 border-[6px] border-white/50 will-change-transform">
-                    <video src="assets/videos/hero_video.mp4" autoplay loop muted playsinline class="w-full h-full object-cover"></video>
+                    <video src="assets/videos/hero_video.mp4" poster="assets/images/hero-poster.webp" loop muted playsinline preload="none" aria-label="Vídeo de apresentação da Dra. Adriana Orneles" class="w-full h-full object-cover"></video>
                     <!-- Sutil gradiente sobre o vídeo para elegância -->
                     <div class="absolute inset-0 bg-gradient-to-t from-brand-dark/30 via-transparent to-transparent pointer-events-none"></div>
                 </div>
@@ -223,8 +263,23 @@
                             </div>
                             <div>
                                 <label for="quiz-telefone" class="block text-sm font-semibold text-brand-dark/80 mb-1 ml-1">WhatsApp</label>
-                                <input type="tel" id="quiz-telefone" placeholder="(DDD) 90000-0000" class="w-full px-5 py-3.5 rounded-2xl border border-brand-sage/40 bg-white/60 focus:bg-white focus:border-brand-gold outline-none transition-all placeholder:text-brand-dark/30 text-brand-dark font-body shadow-sm" oninput="maskPhone(this)" maxlength="15">
+                                <input type="tel" id="quiz-telefone" inputmode="numeric" autocomplete="tel-national" placeholder="(DDD) 90000-0000" class="w-full px-5 py-3.5 rounded-2xl border border-brand-sage/40 bg-white/60 focus:bg-white focus:border-brand-gold outline-none transition-all placeholder:text-brand-dark/30 text-brand-dark font-body shadow-sm" oninput="maskPhone(this)" maxlength="15">
                             </div>
+
+                            <!-- Consentimento LGPD -->
+                            <label for="quiz-consent" class="flex items-start gap-3 pt-1 cursor-pointer select-none group/consent">
+                                <input type="checkbox" id="quiz-consent" class="peer sr-only">
+                                <span class="consent-box mt-0.5 w-5 h-5 flex-shrink-0 rounded-md border border-brand-sage/60 bg-white/70 flex items-center justify-center text-white transition-all group-hover/consent:border-brand-gold peer-checked:bg-brand-sage peer-checked:border-brand-sage peer-focus-visible:ring-2 peer-focus-visible:ring-brand-gold/50" aria-hidden="true">
+                                    <iconify-icon icon="solar:check-read-linear" class="text-sm"></iconify-icon>
+                                </span>
+                                <span class="text-xs leading-relaxed text-brand-dark/70 font-body">
+                                    Autorizo a Dra. Adriana Orneles a usar meu nome, WhatsApp e respostas (inclusive sobre saúde) para avaliar meu caso e entrar em contato comigo. Li a
+                                    <button type="button" onclick="openPrivacy(event)" class="underline underline-offset-2 text-brand-dark hover:text-brand-gold font-medium">política de privacidade</button>.
+                                </span>
+                            </label>
+
+                            <!-- Mensagem de erro (substitui o alert) -->
+                            <p id="quiz-error" class="hidden text-sm text-[#9b4a3c] bg-[#9b4a3c]/5 border border-[#9b4a3c]/20 rounded-xl px-4 py-2.5 font-body" role="alert"></p>
                         </div>
 
                         <button onclick="startQuiz()" class="inline-flex bg-brand-dark text-white px-8 py-4 rounded-full text-xs uppercase tracking-widest font-semibold hover:bg-brand-sage transition-all duration-300 btn-glow shadow-lg shadow-brand-dark/20 items-center gap-2 group w-full max-w-sm justify-center">
@@ -238,6 +293,48 @@
             </div>
         </div>
     </section>
+
+    <!-- POLÍTICA DE PRIVACIDADE (LGPD) -->
+    <dialog id="privacy-dialog" class="privacy-dialog w-[calc(100%-2rem)] max-w-lg max-h-[85vh] rounded-[2rem] p-0 bg-brand-bg text-brand-dark shadow-2xl" aria-labelledby="privacy-title">
+        <div class="flex flex-col max-h-[85vh]">
+            <div class="flex items-center justify-between gap-4 px-6 md:px-8 pt-6 pb-4 border-b border-brand-sage/20">
+                <h2 id="privacy-title" class="font-primary text-xl md:text-2xl">Política de Privacidade</h2>
+                <button type="button" onclick="closePrivacy()" class="w-10 h-10 flex-shrink-0 rounded-full hover:bg-brand-dark/5 flex items-center justify-center" aria-label="Fechar">
+                    <iconify-icon icon="solar:close-circle-linear" class="text-2xl"></iconify-icon>
+                </button>
+            </div>
+            <div tabindex="-1" autofocus class="outline-none overflow-y-auto px-6 md:px-8 py-5 space-y-4 font-body text-sm leading-relaxed text-brand-dark/80">
+                <p>Esta política explica como tratamos os dados informados na <strong>Avaliação Metabólica</strong> deste site, de acordo com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 – LGPD).</p>
+                <div>
+                    <h3 class="font-semibold text-brand-dark mb-1">Quem é a responsável</h3>
+                    <p>Dra. Adriana Orneles, Nutricionista (CRN 9.14965), Rua Major Sebastião Pires, 111, Centro, Ouro Fino/MG.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-brand-dark mb-1">Quais dados coletamos</h3>
+                    <p>Nome, número de WhatsApp e as respostas da avaliação. Algumas respostas são sobre sua saúde e, por isso, são <strong>dados sensíveis</strong>. Se você sair antes de terminar, as respostas já dadas também são registradas.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-brand-dark mb-1">Para que usamos</h3>
+                    <p>Somente para analisar seu caso e entrar em contato com você sobre a avaliação e o agendamento de consulta. Não vendemos nem compartilhamos seus dados para publicidade.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-brand-dark mb-1">Com quem compartilhamos</h3>
+                    <p>As respostas são enviadas por e-mail à nutricionista por meio do serviço Formspree, que atua apenas como operador do envio.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-brand-dark mb-1">Por quanto tempo guardamos</h3>
+                    <p>Pelo tempo necessário para o atendimento ou até você pedir a exclusão.</p>
+                </div>
+                <div>
+                    <h3 class="font-semibold text-brand-dark mb-1">Seus direitos</h3>
+                    <p>Você pode, a qualquer momento, pedir acesso, correção ou exclusão dos seus dados e revogar este consentimento pelo WhatsApp <a href="https://wa.me/5535998825188" target="_blank" rel="noopener" class="underline underline-offset-2 hover:text-brand-gold">(35) 9 9882-5188</a>.</p>
+                </div>
+            </div>
+            <div class="px-6 md:px-8 py-4 border-t border-brand-sage/20">
+                <button type="button" onclick="closePrivacy()" class="w-full bg-brand-dark text-white px-6 py-3.5 rounded-full text-xs uppercase tracking-widest font-semibold hover:bg-brand-sage transition-colors">Entendi</button>
+            </div>
+        </div>
+    </dialog>
 
     <!-- Script do Quiz -->
     <script>
@@ -260,7 +357,7 @@
             { block: "Cérebro", icon: "solar:lightbulb-minimalistic-linear", question: "11. Tem episódios de 'névoa mental'?", options: [{text: "Nunca", score: 0}, {text: "Às vezes", score: 1}, {text: "Frequentemente", score: 1}] },
             { block: "Cérebro", icon: "solar:lightbulb-minimalistic-linear", question: "12. Anda esquecendo coisas simples?", options: [{text: "Nunca", score: 0}, {text: "Às vezes", score: 1}, {text: "Frequentemente", score: 1}] },
             // Bloco 5 - Hormônios
-            { block: "Hormônios", icon: "solar:dna-linear", question: "13. Seu ciclo menstrual mudou nos últimos anos? (se ainda menstrua)", options: [{text: "Mudou", score: 1}, {text: "Está desregular", score: 1}, {text: "Ele é regular, não mudou nada", score: 0}] },
+            { block: "Hormônios", icon: "solar:dna-linear", question: "13. Seu ciclo menstrual mudou nos últimos anos? (se ainda menstrua)", options: [{text: "Mudou", score: 1}, {text: "Está irregular", score: 1}, {text: "Ele é regular, não mudou nada", score: 0}] },
             { block: "Hormônios", icon: "solar:dna-linear", question: "14. Sua TPM piorou?", options: [{text: "Está mais intensa", score: 1}, {text: "Mais vontade de doces e chocolate", score: 1}, {text: "Minha TPM é bem tranquila", score: 0}] },
             { block: "Hormônios", icon: "solar:dna-linear", question: "15. [NOME], você sente mais ansiedade ou alterações de humor?", options: [{text: "Estou mais ansiosa", score: 1}, {text: "Muito irritada", score: 1}, {text: "Choro por qualquer motivo", score: 1}] },
             // Bloco 6 - Pele e Cabelo
@@ -283,6 +380,12 @@
         let userAnswers = [];
         let userName = "";
         let userPhone = "";
+        let consentimentoEm = "";
+
+        // Evita que um nome digitado com "<" ou "&" quebre o HTML do quiz
+        function escapeHtml(text) {
+            return text.replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
+        }
 
         // ---- CONFIGURAÇÃO DE E-MAIL (FORMSPREE) ----
         // Endpoint apontando para drynutri28@gmail.com
@@ -302,6 +405,7 @@
                     "Status": "⚠️ ABANDONO (Não terminou o quiz)",
                     "Nome": userName,
                     "WhatsApp": userPhone,
+                    "Consentimento LGPD": consentimentoEm,
                     "Perguntas Respondidas": userAnswers.length + " de " + quizQuestions.length,
                     "Respostas Preenchidas": respostasParciais || "Nenhuma. Desistiu na primeira pergunta."
                 };
@@ -337,27 +441,65 @@
             input.value = value;
         }
 
+        function showQuizError(message, field) {
+            const errorEl = document.getElementById('quiz-error');
+            errorEl.textContent = message;
+            errorEl.classList.remove('hidden');
+            if (field) {
+                field.focus();
+                field.classList.add('border-[#9b4a3c]');
+                field.addEventListener('input', () => field.classList.remove('border-[#9b4a3c]'), { once: true });
+            }
+        }
+
+        function hideQuizError() {
+            document.getElementById('quiz-error').classList.add('hidden');
+        }
+
+        function openPrivacy(event) {
+            if (event) event.preventDefault(); // não marca o checkbox ao clicar no link
+            document.getElementById('privacy-dialog').showModal();
+        }
+
+        function closePrivacy() {
+            document.getElementById('privacy-dialog').close();
+        }
+
+        // Fecha a política ao clicar fora da caixa
+        document.getElementById('privacy-dialog').addEventListener('click', (e) => {
+            if (e.target === e.currentTarget) closePrivacy();
+        });
+
+        document.getElementById('quiz-consent').addEventListener('change', hideQuizError);
+
         function startQuiz() {
             const nomeInput = document.getElementById('quiz-nome');
             const telefoneInput = document.getElementById('quiz-telefone');
-            
+            const consentInput = document.getElementById('quiz-consent');
+            hideQuizError();
+
             if (!nomeInput.value.trim()) {
-                alert("Por favor, informe seu nome para começarmos.");
-                nomeInput.focus();
+                showQuizError("Por favor, informe seu nome para começarmos.", nomeInput);
                 return;
             }
-            
+
             const phoneRaw = telefoneInput.value.replace(/\D/g, "");
             if (phoneRaw.length < 10) {
-                alert("Por favor, informe um WhatsApp válido com DDD.");
-                telefoneInput.focus();
+                showQuizError("Por favor, informe um WhatsApp válido com DDD.", telefoneInput);
+                return;
+            }
+
+            if (!consentInput.checked) {
+                showQuizError("Para continuar, marque a autorização de uso dos seus dados.");
+                consentInput.focus();
                 return;
             }
 
             // Pega o primeiro nome com a inicial maiúscula
-            const rawName = nomeInput.value.trim().split(' ')[0];
-            userName = rawName.charAt(0).toUpperCase() + rawName.slice(1).toLowerCase();
+            const rawName = nomeInput.value.trim().split(/\s+/)[0];
+            userName = escapeHtml(rawName.charAt(0).toUpperCase() + rawName.slice(1).toLowerCase());
             userPhone = phoneRaw;
+            consentimentoEm = "Sim — " + new Date().toLocaleString('pt-BR');
             quizFinalizado = false;
 
             if(quizQuestions.length === 0) return;
@@ -405,6 +547,11 @@
                     <div class="space-y-3 w-full flex-grow flex flex-col justify-center">
                         ${optionsHtml}
                     </div>
+                    ${currentQuestionIndex > 0 ? `
+                    <button type="button" onclick="goBack()" class="mt-6 self-center inline-flex items-center gap-1.5 text-xs uppercase tracking-widest font-medium text-brand-dark/50 hover:text-brand-dark transition-colors px-4 py-2 rounded-full">
+                        <iconify-icon icon="solar:arrow-left-linear" class="text-base"></iconify-icon>
+                        Voltar
+                    </button>` : ''}
                 </div>
             `;
 
@@ -412,7 +559,23 @@
             fadeInContent();
         }
 
+        let isTransitioning = false; // evita cliques duplos pulando perguntas
+
+        function goBack() {
+            if (isTransitioning || currentQuestionIndex === 0) return;
+            isTransitioning = true;
+            userAnswers.pop();
+            currentQuestionIndex--;
+            updateProgress();
+            fadeOutContent(() => {
+                renderQuestion();
+                isTransitioning = false;
+            });
+        }
+
         function selectOption(optionIndex) {
+            if (isTransitioning) return;
+            isTransitioning = true;
             userAnswers.push({
                 question: currentQuestionIndex,
                 answer: optionIndex
@@ -424,11 +587,13 @@
                 updateProgress();
                 fadeOutContent(() => {
                     renderQuestion();
+                    isTransitioning = false;
                 });
             } else {
                 updateProgress(); // Chega a 100%
                 fadeOutContent(() => {
                     showResults();
+                    isTransitioning = false;
                 });
             }
         }
@@ -486,7 +651,7 @@
                     <p class="font-body text-brand-dark/70 mb-8 max-w-lg mx-auto leading-relaxed">
                         ${resultDescription}
                     </p>
-                    <a href="https://wa.me/5535998825188?text=Ol%C3%A1%20Dra.%20Adriana.%20Meu%20nome%20%C3%A9%20${userName}.%20Acabei%20de%20finalizar%20a%20avalia%C3%A7%C3%A3o%20metab%C3%B3lica%20no%20seu%20site.%20Meu%20resultado%20deu%20${totalScore}%20sinais.%20Gostaria%20de%20agendar%20minha%20consulta." target="_blank" class="inline-flex bg-brand-gold text-white px-8 py-4 rounded-full text-xs uppercase tracking-widest font-semibold hover:bg-[#b0925c] transition-all duration-300 btn-glow shadow-lg shadow-brand-gold/30 items-center gap-2 group">
+                    <a href="https://wa.me/5535998825188?text=Ol%C3%A1%20Dra.%20Adriana.%20Meu%20nome%20%C3%A9%20${encodeURIComponent(userName)}.%20Acabei%20de%20finalizar%20a%20avalia%C3%A7%C3%A3o%20metab%C3%B3lica%20no%20seu%20site.%20Meu%20resultado%20deu%20${totalScore}%20sinais.%20Gostaria%20de%20agendar%20minha%20consulta." target="_blank" class="inline-flex bg-brand-gold text-white px-8 py-4 rounded-full text-xs uppercase tracking-widest font-semibold hover:bg-[#b0925c] transition-all duration-300 btn-glow shadow-lg shadow-brand-gold/30 items-center gap-2 group">
                         Falar com a Equipe
                         <iconify-icon icon="solar:whatsapp-linear" class="text-lg group-hover:scale-110 transition-transform"></iconify-icon>
                     </a>
@@ -504,6 +669,7 @@
                 "Status": "✅ CONCLUSÃO (Terminou o quiz)",
                 "Nome": userName,
                 "WhatsApp": userPhone,
+                "Consentimento LGPD": consentimentoEm,
                 "Pontuação Final": totalScore + " sinais",
                 "Diagnóstico": resultTitle,
                 "Respostas do Quiz": respostasFormatadas
@@ -532,7 +698,13 @@
             setTimeout(() => {
                 quizContent.classList.remove('opacity-0');
                 quizContent.classList.add('opacity-100');
-            }, 50); 
+
+                // No celular, se o topo do quiz ficou escondido atrás do menu, rola suavemente até ele
+                const cardTop = quizContent.parentElement.getBoundingClientRect().top;
+                if (cardTop < 90) {
+                    window.scrollBy({ top: cardTop - 100, behavior: 'smooth' });
+                }
+            }, 50);
         }
     </script>
 
@@ -566,8 +738,8 @@
                     <div class="w-14 h-14 rounded-2xl bg-brand-dark/10 border border-brand-dark/20 flex items-center justify-center text-brand-dark mb-8 group-hover:bg-brand-dark group-hover:text-brand-gold group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 relative z-10 shadow-lg shadow-transparent group-hover:shadow-brand-dark/30">
                         <iconify-icon icon="solar:users-group-two-rounded-linear" class="text-3xl"></iconify-icon>
                     </div>
-                    <h3 class="font-primary text-2xl mb-4 relative z-10 group-hover:translate-x-2 transition-transform duration-500 font-medium bg-gradient-to-r from-brand-dark to-brand-sage text-transparent bg-clip-text drop-shadow-sm">Mulheres 30+</h3>
-                    <p class="text-white text-[15px] font-medium leading-relaxed relative z-10 transition-colors duration-500 drop-shadow-md">
+                    <h3 class="font-primary text-2xl mb-4 relative z-10 group-hover:translate-x-2 transition-transform duration-500 font-medium text-brand-dark">Mulheres 30+</h3>
+                    <p class="text-brand-dark/90 text-[15px] font-medium leading-relaxed relative z-10 transition-colors duration-500">
                         Para mulheres que sentem que ganharam peso sem explicação, têm dificuldade para emagrecer e percebem que o corpo não responde mais como antes.
                     </p>
                 </div>
@@ -578,8 +750,8 @@
                     <div class="w-14 h-14 rounded-2xl bg-brand-dark/10 border border-brand-dark/20 flex items-center justify-center text-brand-dark mb-8 group-hover:bg-brand-dark group-hover:text-brand-gold group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 relative z-10 shadow-lg shadow-transparent group-hover:shadow-brand-dark/30">
                         <iconify-icon icon="solar:moon-sleep-linear" class="text-3xl"></iconify-icon>
                     </div>
-                    <h3 class="font-primary text-2xl mb-4 relative z-10 group-hover:translate-x-2 transition-transform duration-500 font-medium bg-gradient-to-r from-brand-dark to-brand-sage text-transparent bg-clip-text drop-shadow-sm">Perimenopausa <br><em class="font-accent italic font-light text-brand-dark/90 text-[1.1em]">e Menopausa</em></h3>
-                    <p class="text-white text-[15px] font-medium leading-relaxed relative z-10 transition-colors duration-500 drop-shadow-md">
+                    <h3 class="font-primary text-2xl mb-4 relative z-10 group-hover:translate-x-2 transition-transform duration-500 font-medium text-brand-dark">Perimenopausa <br><em class="font-accent italic font-light text-brand-dark/80 text-[1.1em]">e Menopausa</em></h3>
+                    <p class="text-brand-dark/90 text-[15px] font-medium leading-relaxed relative z-10 transition-colors duration-500">
                         Controle de sintomas, equilíbrio hormonal, composição corporal e qualidade de vida nessa fase de transição.
                     </p>
                 </div>
@@ -590,8 +762,8 @@
                     <div class="w-14 h-14 rounded-2xl bg-brand-dark/10 border border-brand-dark/20 flex items-center justify-center text-brand-dark mb-8 group-hover:bg-brand-dark group-hover:text-brand-gold group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 relative z-10 shadow-lg shadow-transparent group-hover:shadow-brand-dark/30">
                         <iconify-icon icon="solar:heart-pulse-linear" class="text-3xl"></iconify-icon>
                     </div>
-                    <h3 class="font-primary text-2xl mb-4 relative z-10 group-hover:translate-x-2 transition-transform duration-500 font-medium bg-gradient-to-r from-brand-dark to-brand-sage text-transparent bg-clip-text drop-shadow-sm">Doenças Autoimunes</h3>
-                    <p class="text-white text-[15px] font-medium leading-relaxed relative z-10 transition-colors duration-500 drop-shadow-md">
+                    <h3 class="font-primary text-2xl mb-4 relative z-10 group-hover:translate-x-2 transition-transform duration-500 font-medium text-brand-dark">Doenças Autoimunes</h3>
+                    <p class="text-brand-dark/90 text-[15px] font-medium leading-relaxed relative z-10 transition-colors duration-500">
                         Acompanhamento nutricional para mulheres com Hashimoto, artrite reumatoide e outras condições inflamatórias.
                     </p>
                 </div>
@@ -602,8 +774,8 @@
                     <div class="w-14 h-14 rounded-2xl bg-brand-dark/10 border border-brand-dark/20 flex items-center justify-center text-brand-dark mb-8 group-hover:bg-brand-dark group-hover:text-brand-gold group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 relative z-10 shadow-lg shadow-transparent group-hover:shadow-brand-dark/30">
                         <iconify-icon icon="solar:chart-square-linear" class="text-3xl"></iconify-icon>
                     </div>
-                    <h3 class="font-primary text-2xl mb-4 relative z-10 group-hover:translate-x-2 transition-transform duration-500 font-medium bg-gradient-to-r from-brand-dark to-brand-sage text-transparent bg-clip-text drop-shadow-sm">Saúde Metabólica</h3>
-                    <p class="text-white text-[15px] font-medium leading-relaxed relative z-10 transition-colors duration-500 drop-shadow-md">
+                    <h3 class="font-primary text-2xl mb-4 relative z-10 group-hover:translate-x-2 transition-transform duration-500 font-medium text-brand-dark">Saúde Metabólica</h3>
+                    <p class="text-brand-dark/90 text-[15px] font-medium leading-relaxed relative z-10 transition-colors duration-500">
                         Tratamento nutricional para diabetes, colesterol elevado, gordura no fígado, hipertensão e alterações da tireoide.
                     </p>
                 </div>
@@ -614,8 +786,8 @@
                     <div class="w-14 h-14 rounded-2xl bg-brand-dark/10 border border-brand-dark/20 flex items-center justify-center text-brand-dark mb-8 group-hover:bg-brand-dark group-hover:text-brand-gold group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 relative z-10 shadow-lg shadow-transparent group-hover:shadow-brand-dark/30">
                         <iconify-icon icon="solar:bolt-linear" class="text-3xl"></iconify-icon>
                     </div>
-                    <h3 class="font-primary text-2xl mb-4 relative z-10 group-hover:translate-x-2 transition-transform duration-500 font-medium bg-gradient-to-r from-brand-dark to-brand-sage text-transparent bg-clip-text drop-shadow-sm">Massa Muscular</h3>
-                    <p class="text-white text-[15px] font-medium leading-relaxed relative z-10 transition-colors duration-500 drop-shadow-md">
+                    <h3 class="font-primary text-2xl mb-4 relative z-10 group-hover:translate-x-2 transition-transform duration-500 font-medium text-brand-dark">Massa Muscular</h3>
+                    <p class="text-brand-dark/90 text-[15px] font-medium leading-relaxed relative z-10 transition-colors duration-500">
                         Para homens e mulheres que desejam melhorar composição corporal, aumentar massa magra e reduzir percentual de gordura.
                     </p>
                 </div>
@@ -626,8 +798,8 @@
                     <div class="w-14 h-14 rounded-2xl bg-brand-dark/10 border border-brand-dark/20 flex items-center justify-center text-brand-dark mb-8 group-hover:bg-brand-dark group-hover:text-brand-gold group-hover:scale-110 group-hover:-rotate-6 transition-all duration-500 relative z-10 shadow-lg shadow-transparent group-hover:shadow-brand-dark/30">
                         <iconify-icon icon="solar:leaf-linear" class="text-3xl"></iconify-icon>
                     </div>
-                    <h3 class="font-primary text-2xl mb-4 relative z-10 group-hover:translate-x-2 transition-transform duration-500 font-medium bg-gradient-to-r from-brand-dark to-brand-sage text-transparent bg-clip-text drop-shadow-sm">Saúde do Idoso</h3>
-                    <p class="text-white text-[15px] font-medium leading-relaxed relative z-10 transition-colors duration-500 drop-shadow-md">
+                    <h3 class="font-primary text-2xl mb-4 relative z-10 group-hover:translate-x-2 transition-transform duration-500 font-medium text-brand-dark">Saúde do Idoso</h3>
+                    <p class="text-brand-dark/90 text-[15px] font-medium leading-relaxed relative z-10 transition-colors duration-500">
                         Estratégias nutricionais para manutenção da autonomia, força muscular, saúde metabólica e qualidade de vida.
                     </p>
                 </div>
@@ -676,30 +848,30 @@
             <!-- First Set -->
             <div class="flex items-center gap-16 md:gap-24 px-8 md:px-12 whitespace-nowrap">
                 <span class="font-accent text-base md:text-lg tracking-[0.2em] text-white uppercase font-medium drop-shadow-sm">Nutrição Clínica</span>
-                <img src="assets/images/logo-adriana.png" alt="Logo Dra. Adriana" class="h-16 md:h-20 w-auto object-contain drop-shadow-sm animate-pulse-slow">
+                <img src="assets/images/logo-adriana.webp" alt="" width="360" height="450" loading="lazy" class="h-16 md:h-20 w-auto object-contain drop-shadow-sm animate-pulse-slow">
                 
                 <span class="font-accent text-base md:text-lg tracking-[0.2em] text-white uppercase font-medium drop-shadow-sm">Saúde Hormonal</span>
-                <img src="assets/images/logo-adriana.png" alt="Logo Dra. Adriana" class="h-16 md:h-20 w-auto object-contain drop-shadow-sm animate-pulse-slow">
+                <img src="assets/images/logo-adriana.webp" alt="" width="360" height="450" loading="lazy" class="h-16 md:h-20 w-auto object-contain drop-shadow-sm animate-pulse-slow">
                 
                 <span class="font-accent text-base md:text-lg tracking-[0.2em] text-white uppercase font-medium drop-shadow-sm">Emagrecimento Sustentável</span>
-                <img src="assets/images/logo-adriana.png" alt="Logo Dra. Adriana" class="h-16 md:h-20 w-auto object-contain drop-shadow-sm animate-pulse-slow">
+                <img src="assets/images/logo-adriana.webp" alt="" width="360" height="450" loading="lazy" class="h-16 md:h-20 w-auto object-contain drop-shadow-sm animate-pulse-slow">
                 
                 <span class="font-accent text-base md:text-lg tracking-[0.2em] text-white uppercase font-medium drop-shadow-sm">Reative seu Metabolismo</span>
-                <img src="assets/images/logo-adriana.png" alt="Logo Dra. Adriana" class="h-16 md:h-20 w-auto object-contain drop-shadow-sm animate-pulse-slow">
+                <img src="assets/images/logo-adriana.webp" alt="" width="360" height="450" loading="lazy" class="h-16 md:h-20 w-auto object-contain drop-shadow-sm animate-pulse-slow">
             </div>
             <!-- Second Set (Duplicate for infinite scroll) -->
             <div class="flex items-center gap-16 md:gap-24 px-8 md:px-12 whitespace-nowrap">
                 <span class="font-accent text-base md:text-lg tracking-[0.2em] text-white uppercase font-medium drop-shadow-sm">Nutrição Clínica</span>
-                <img src="assets/images/logo-adriana.png" alt="Logo Dra. Adriana" class="h-16 md:h-20 w-auto object-contain drop-shadow-sm animate-pulse-slow">
+                <img src="assets/images/logo-adriana.webp" alt="" width="360" height="450" loading="lazy" class="h-16 md:h-20 w-auto object-contain drop-shadow-sm animate-pulse-slow">
                 
                 <span class="font-accent text-base md:text-lg tracking-[0.2em] text-white uppercase font-medium drop-shadow-sm">Saúde Hormonal</span>
-                <img src="assets/images/logo-adriana.png" alt="Logo Dra. Adriana" class="h-16 md:h-20 w-auto object-contain drop-shadow-sm animate-pulse-slow">
+                <img src="assets/images/logo-adriana.webp" alt="" width="360" height="450" loading="lazy" class="h-16 md:h-20 w-auto object-contain drop-shadow-sm animate-pulse-slow">
                 
                 <span class="font-accent text-base md:text-lg tracking-[0.2em] text-white uppercase font-medium drop-shadow-sm">Emagrecimento Sustentável</span>
-                <img src="assets/images/logo-adriana.png" alt="Logo Dra. Adriana" class="h-16 md:h-20 w-auto object-contain drop-shadow-sm animate-pulse-slow">
+                <img src="assets/images/logo-adriana.webp" alt="" width="360" height="450" loading="lazy" class="h-16 md:h-20 w-auto object-contain drop-shadow-sm animate-pulse-slow">
                 
                 <span class="font-accent text-base md:text-lg tracking-[0.2em] text-white uppercase font-medium drop-shadow-sm">Reative seu Metabolismo</span>
-                <img src="assets/images/logo-adriana.png" alt="Logo Dra. Adriana" class="h-16 md:h-20 w-auto object-contain drop-shadow-sm animate-pulse-slow">
+                <img src="assets/images/logo-adriana.webp" alt="" width="360" height="450" loading="lazy" class="h-16 md:h-20 w-auto object-contain drop-shadow-sm animate-pulse-slow">
             </div>
         </div>
     </div>
@@ -743,21 +915,21 @@
                         
                         <!-- Floating Avatar -->
                         <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full border-[6px] border-white overflow-hidden shadow-sm bg-[#f2ede4] group-hover:scale-110 transition-transform duration-500">
-                            <img src="assets/images/depoimentos/01.jpeg.jpg" alt="Paciente" class="w-full h-full object-cover">
+                            <img src="assets/images/depoimentos/01.webp" alt="Foto da paciente" width="240" height="300" decoding="async" class="w-full h-full object-cover">
                         </div>
                         
                         <!-- Text Content -->
-                        <p class="font-body text-[#8A9A8B] leading-relaxed text-[14px] italic mt-2">
+                        <p class="font-body text-[#5E6A56] leading-relaxed text-[14px] italic mt-2">
                             "Já no segundo mês de tratamento, tive uma perda de 4 kg e muitas medidas. Eu estava pré-diabética, e já consegui sair desta condição e me sentir muito melhor, com mais energia e menos dor na coluna."
                         </p>
-                        <p class="font-primary text-[11px] tracking-[0.2em] uppercase text-[#C9A96E] font-semibold mt-4">— Flavia</p>
+                        <p class="font-primary text-[11px] tracking-[0.2em] uppercase text-[#96733A] font-semibold mt-4">— Flavia</p>
 
                         <!-- Signature Container -->
                         <div class="mt-8 flex flex-col items-center">
                             <!-- Signature -->
-                            <h4 class="text-4xl text-[#a4ab81] mb-3" style="font-family: 'Great Vibes', cursive;">
+                            <p class="text-4xl text-[#7F8760] mb-3" style="font-family: \'Great Vibes\', cursive;">
                                 Condição revertida
-                            </h4>
+                            </p>
 
                             <!-- Stars -->
                             <div class="flex items-center gap-1 text-[#C9A96E] text-base">
@@ -777,21 +949,21 @@
                         
                         <!-- Floating Avatar -->
                         <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full border-[6px] border-white overflow-hidden shadow-sm bg-[#f2ede4] group-hover:scale-110 transition-transform duration-500">
-                            <img src="assets/images/depoimentos/02.jpeg.jpg" alt="Paciente" class="w-full h-full object-cover">
+                            <img src="assets/images/depoimentos/02.webp" alt="Foto da paciente" width="240" height="300" decoding="async" class="w-full h-full object-cover">
                         </div>
                         
                         <!-- Text Content -->
-                        <p class="font-body text-[#8A9A8B] leading-relaxed text-[14px] italic mt-2">
+                        <p class="font-body text-[#5E6A56] leading-relaxed text-[14px] italic mt-2">
                             "Me sentia mal pois sempre parecia que estava grávida. Hoje consegui comprar roupas que amei, perdi peso e medida da barriga, então não ficou marcando. A mudança de hábitos eleva a autoestima."
                         </p>
-                        <p class="font-primary text-[11px] tracking-[0.2em] uppercase text-[#C9A96E] font-semibold mt-4">— Angelita</p>
+                        <p class="font-primary text-[11px] tracking-[0.2em] uppercase text-[#96733A] font-semibold mt-4">— Angelita</p>
 
                         <!-- Signature Container -->
                         <div class="mt-8 flex flex-col items-center">
                             <!-- Signature -->
-                            <h4 class="text-4xl text-[#a4ab81] mb-3" style="font-family: 'Great Vibes', cursive;">
+                            <p class="text-4xl text-[#7F8760] mb-3" style="font-family: \'Great Vibes\', cursive;">
                                 Mudança de hábitos
-                            </h4>
+                            </p>
 
                             <!-- Stars -->
                             <div class="flex items-center gap-1 text-[#C9A96E] text-base">
@@ -811,21 +983,21 @@
                         
                         <!-- Floating Avatar -->
                         <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full border-[6px] border-white overflow-hidden shadow-sm bg-[#f2ede4] group-hover:scale-110 transition-transform duration-500">
-                            <img src="assets/images/depoimentos/03.jpeg.jpg" alt="Paciente" class="w-full h-full object-cover">
+                            <img src="assets/images/depoimentos/03.webp" alt="Foto da paciente" width="240" height="300" decoding="async" class="w-full h-full object-cover">
                         </div>
                         
                         <!-- Text Content -->
-                        <p class="font-body text-[#8A9A8B] leading-relaxed text-[14px] italic mt-2">
+                        <p class="font-body text-[#5E6A56] leading-relaxed text-[14px] italic mt-2">
                             "Queria compartilhar uma alegria com você! Ontem foi dia de renovar todo o guarda-roupas depois de perder todas as roupas antigas. Consegui sair da numeração 60 para a 48/50. Felicidade pura!"
                         </p>
-                        <p class="font-primary text-[11px] tracking-[0.2em] uppercase text-[#C9A96E] font-semibold mt-4">— Alessandra</p>
+                        <p class="font-primary text-[11px] tracking-[0.2em] uppercase text-[#96733A] font-semibold mt-4">— Alessandra</p>
 
                         <!-- Signature Container -->
                         <div class="mt-8 flex flex-col items-center">
                             <!-- Signature -->
-                            <h4 class="text-4xl text-[#a4ab81] mb-3" style="font-family: 'Great Vibes', cursive;">
+                            <p class="text-4xl text-[#7F8760] mb-3" style="font-family: \'Great Vibes\', cursive;">
                                 Guarda-roupas novo
-                            </h4>
+                            </p>
 
                             <!-- Stars -->
                             <div class="flex items-center gap-1 text-[#C9A96E] text-base">
@@ -845,20 +1017,20 @@
                         
                         <!-- Floating Avatar -->
                         <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full border-[6px] border-white overflow-hidden shadow-sm bg-[#f2ede4] group-hover:scale-110 transition-transform duration-500">
-                            <img src="assets/images/depoimentos/07.jpeg.jpg" alt="Paciente" class="w-full h-full object-cover">
+                            <img src="assets/images/depoimentos/07.webp" alt="Foto da paciente" width="240" height="300" decoding="async" class="w-full h-full object-cover">
                         </div>
                         
                         <!-- Text Content -->
-                        <p class="font-body text-[#8A9A8B] leading-relaxed text-[14px] italic mt-2">
+                        <p class="font-body text-[#5E6A56] leading-relaxed text-[14px] italic mt-2">
                             "A rotina estressante e a má alimentação estavam destruindo minha saúde. Com o acompanhamento focado no metabolismo, perdi peso sem dietas malucas e hoje tenho muito mais foco e disposição no dia a dia. Muito obrigado!"
                         </p>
 
                         <!-- Signature Container -->
                         <div class="mt-8 flex flex-col items-center">
                             <!-- Signature -->
-                            <h4 class="text-4xl text-[#a4ab81] mb-3" style="font-family: 'Great Vibes', cursive;">
+                            <p class="text-4xl text-[#7F8760] mb-3" style="font-family: \'Great Vibes\', cursive;">
                                 Energia e foco
-                            </h4>
+                            </p>
 
                             <!-- Stars -->
                             <div class="flex items-center gap-1 text-[#C9A96E] text-base">
@@ -878,21 +1050,21 @@
                         
                         <!-- Floating Avatar -->
                         <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full border-[6px] border-white overflow-hidden shadow-sm bg-[#f2ede4] group-hover:scale-110 transition-transform duration-500">
-                            <img src="assets/images/depoimentos/05.jpeg.jpg" alt="Paciente" class="w-full h-full object-cover">
+                            <img src="assets/images/depoimentos/05.webp" alt="Foto da paciente" width="240" height="300" decoding="async" class="w-full h-full object-cover">
                         </div>
                         
                         <!-- Text Content -->
-                        <p class="font-body text-[#8A9A8B] leading-relaxed text-[14px] italic mt-2">
+                        <p class="font-body text-[#5E6A56] leading-relaxed text-[14px] italic mt-2">
                             "Sabe a sensação de olhar no espelho e falar 'nossa, eu gosto do que estou vendo'? É uma vitória inexplicável conseguir resgatar esse amor próprio depois de tanto tempo."
                         </p>
-                        <p class="font-primary text-[11px] tracking-[0.2em] uppercase text-[#C9A96E] font-semibold mt-4">— Alessandra</p>
+                        <p class="font-primary text-[11px] tracking-[0.2em] uppercase text-[#96733A] font-semibold mt-4">— Alessandra</p>
 
                         <!-- Signature Container -->
                         <div class="mt-8 flex flex-col items-center">
                             <!-- Signature -->
-                            <h4 class="text-4xl text-[#a4ab81] mb-3" style="font-family: 'Great Vibes', cursive;">
+                            <p class="text-4xl text-[#7F8760] mb-3" style="font-family: \'Great Vibes\', cursive;">
                                 Amor próprio
-                            </h4>
+                            </p>
 
                             <!-- Stars -->
                             <div class="flex items-center gap-1 text-[#C9A96E] text-base">
@@ -912,20 +1084,20 @@
                         
                         <!-- Floating Avatar -->
                         <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full border-[6px] border-white overflow-hidden shadow-sm bg-[#f2ede4] group-hover:scale-110 transition-transform duration-500">
-                            <img src="assets/images/depoimentos/06.jpeg.jpg" alt="Paciente" class="w-full h-full object-cover">
+                            <img src="assets/images/depoimentos/06.webp" alt="Foto da paciente" width="240" height="300" decoding="async" class="w-full h-full object-cover">
                         </div>
                         
                         <!-- Text Content -->
-                        <p class="font-body text-[#8A9A8B] leading-relaxed text-[14px] italic mt-2">
+                        <p class="font-body text-[#5E6A56] leading-relaxed text-[14px] italic mt-2">
                             "Depois de tentar de tudo e achar que meu metabolismo tinha parado, a sua abordagem foi um alívio. Consegui emagrecer de forma sustentável. Hoje me sinto disposta."
                         </p>
 
                         <!-- Signature Container -->
                         <div class="mt-8 flex flex-col items-center">
                             <!-- Signature -->
-                            <h4 class="text-4xl text-[#a4ab81] mb-3" style="font-family: 'Great Vibes', cursive;">
+                            <p class="text-4xl text-[#7F8760] mb-3" style="font-family: \'Great Vibes\', cursive;">
                                 Confiança de volta
-                            </h4>
+                            </p>
 
                             <!-- Stars -->
                             <div class="flex items-center gap-1 text-[#C9A96E] text-base">
@@ -945,20 +1117,20 @@
                         
                         <!-- Floating Avatar -->
                         <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full border-[6px] border-white overflow-hidden shadow-sm bg-[#f2ede4] group-hover:scale-110 transition-transform duration-500">
-                            <img src="assets/images/depoimentos/04.jpeg.jpg" alt="Paciente" class="w-full h-full object-cover">
+                            <img src="assets/images/depoimentos/04.webp" alt="Foto da paciente" width="240" height="300" decoding="async" class="w-full h-full object-cover">
                         </div>
                         
                         <!-- Text Content -->
-                        <p class="font-body text-[#8A9A8B] leading-relaxed text-[14px] italic mt-2">
+                        <p class="font-body text-[#5E6A56] leading-relaxed text-[14px] italic mt-2">
                             "As intensas ondas de calor da menopausa e a dificuldade para emagrecer estavam acabando com a minha energia. A abordagem focada na regulação hormonal mudou tudo. Recuperei minha vitalidade! Recomendo de olhos fechados."
                         </p>
 
                         <!-- Signature Container -->
                         <div class="mt-8 flex flex-col items-center">
                             <!-- Signature -->
-                            <h4 class="text-4xl text-[#a4ab81] mb-3" style="font-family: 'Great Vibes', cursive;">
+                            <p class="text-4xl text-[#7F8760] mb-3" style="font-family: \'Great Vibes\', cursive;">
                                 Fim dos sintomas
-                            </h4>
+                            </p>
 
                             <!-- Stars -->
                             <div class="flex items-center gap-1 text-[#C9A96E] text-base">
@@ -981,21 +1153,21 @@
                         
                         <!-- Floating Avatar -->
                         <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full border-[6px] border-white overflow-hidden shadow-sm bg-[#f2ede4] group-hover:scale-110 transition-transform duration-500">
-                            <img src="assets/images/depoimentos/01.jpeg.jpg" alt="Paciente" class="w-full h-full object-cover">
+                            <img src="assets/images/depoimentos/01.webp" alt="Foto da paciente" width="240" height="300" decoding="async" class="w-full h-full object-cover">
                         </div>
                         
                         <!-- Text Content -->
-                        <p class="font-body text-[#8A9A8B] leading-relaxed text-[14px] italic mt-2">
+                        <p class="font-body text-[#5E6A56] leading-relaxed text-[14px] italic mt-2">
                             "Já no segundo mês de tratamento, tive uma perda de 4 kg e muitas medidas. Eu estava pré-diabética, e já consegui sair desta condição e me sentir muito melhor, com mais energia e menos dor na coluna."
                         </p>
-                        <p class="font-primary text-[11px] tracking-[0.2em] uppercase text-[#C9A96E] font-semibold mt-4">— Flavia</p>
+                        <p class="font-primary text-[11px] tracking-[0.2em] uppercase text-[#96733A] font-semibold mt-4">— Flavia</p>
 
                         <!-- Signature Container -->
                         <div class="mt-8 flex flex-col items-center">
                             <!-- Signature -->
-                            <h4 class="text-4xl text-[#a4ab81] mb-3" style="font-family: 'Great Vibes', cursive;">
+                            <p class="text-4xl text-[#7F8760] mb-3" style="font-family: \'Great Vibes\', cursive;">
                                 Condição revertida
-                            </h4>
+                            </p>
 
                             <!-- Stars -->
                             <div class="flex items-center gap-1 text-[#C9A96E] text-base">
@@ -1015,21 +1187,21 @@
                         
                         <!-- Floating Avatar -->
                         <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full border-[6px] border-white overflow-hidden shadow-sm bg-[#f2ede4] group-hover:scale-110 transition-transform duration-500">
-                            <img src="assets/images/depoimentos/02.jpeg.jpg" alt="Paciente" class="w-full h-full object-cover">
+                            <img src="assets/images/depoimentos/02.webp" alt="Foto da paciente" width="240" height="300" decoding="async" class="w-full h-full object-cover">
                         </div>
                         
                         <!-- Text Content -->
-                        <p class="font-body text-[#8A9A8B] leading-relaxed text-[14px] italic mt-2">
+                        <p class="font-body text-[#5E6A56] leading-relaxed text-[14px] italic mt-2">
                             "Me sentia mal pois sempre parecia que estava grávida. Hoje consegui comprar roupas que amei, perdi peso e medida da barriga, então não ficou marcando. A mudança de hábitos eleva a autoestima."
                         </p>
-                        <p class="font-primary text-[11px] tracking-[0.2em] uppercase text-[#C9A96E] font-semibold mt-4">— Angelita</p>
+                        <p class="font-primary text-[11px] tracking-[0.2em] uppercase text-[#96733A] font-semibold mt-4">— Angelita</p>
 
                         <!-- Signature Container -->
                         <div class="mt-8 flex flex-col items-center">
                             <!-- Signature -->
-                            <h4 class="text-4xl text-[#a4ab81] mb-3" style="font-family: 'Great Vibes', cursive;">
+                            <p class="text-4xl text-[#7F8760] mb-3" style="font-family: \'Great Vibes\', cursive;">
                                 Mudança de hábitos
-                            </h4>
+                            </p>
 
                             <!-- Stars -->
                             <div class="flex items-center gap-1 text-[#C9A96E] text-base">
@@ -1049,21 +1221,21 @@
                         
                         <!-- Floating Avatar -->
                         <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full border-[6px] border-white overflow-hidden shadow-sm bg-[#f2ede4] group-hover:scale-110 transition-transform duration-500">
-                            <img src="assets/images/depoimentos/03.jpeg.jpg" alt="Paciente" class="w-full h-full object-cover">
+                            <img src="assets/images/depoimentos/03.webp" alt="Foto da paciente" width="240" height="300" decoding="async" class="w-full h-full object-cover">
                         </div>
                         
                         <!-- Text Content -->
-                        <p class="font-body text-[#8A9A8B] leading-relaxed text-[14px] italic mt-2">
+                        <p class="font-body text-[#5E6A56] leading-relaxed text-[14px] italic mt-2">
                             "Queria compartilhar uma alegria com você! Ontem foi dia de renovar todo o guarda-roupas depois de perder todas as roupas antigas. Consegui sair da numeração 60 para a 48/50. Felicidade pura!"
                         </p>
-                        <p class="font-primary text-[11px] tracking-[0.2em] uppercase text-[#C9A96E] font-semibold mt-4">— Alessandra</p>
+                        <p class="font-primary text-[11px] tracking-[0.2em] uppercase text-[#96733A] font-semibold mt-4">— Alessandra</p>
 
                         <!-- Signature Container -->
                         <div class="mt-8 flex flex-col items-center">
                             <!-- Signature -->
-                            <h4 class="text-4xl text-[#a4ab81] mb-3" style="font-family: 'Great Vibes', cursive;">
+                            <p class="text-4xl text-[#7F8760] mb-3" style="font-family: \'Great Vibes\', cursive;">
                                 Guarda-roupas novo
-                            </h4>
+                            </p>
 
                             <!-- Stars -->
                             <div class="flex items-center gap-1 text-[#C9A96E] text-base">
@@ -1083,20 +1255,20 @@
                         
                         <!-- Floating Avatar -->
                         <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full border-[6px] border-white overflow-hidden shadow-sm bg-[#f2ede4] group-hover:scale-110 transition-transform duration-500">
-                            <img src="assets/images/depoimentos/07.jpeg.jpg" alt="Paciente" class="w-full h-full object-cover">
+                            <img src="assets/images/depoimentos/07.webp" alt="Foto da paciente" width="240" height="300" decoding="async" class="w-full h-full object-cover">
                         </div>
                         
                         <!-- Text Content -->
-                        <p class="font-body text-[#8A9A8B] leading-relaxed text-[14px] italic mt-2">
+                        <p class="font-body text-[#5E6A56] leading-relaxed text-[14px] italic mt-2">
                             "A rotina estressante e a má alimentação estavam destruindo minha saúde. Com o acompanhamento focado no metabolismo, perdi peso sem dietas malucas e hoje tenho muito mais foco e disposição no dia a dia. Muito obrigado!"
                         </p>
 
                         <!-- Signature Container -->
                         <div class="mt-8 flex flex-col items-center">
                             <!-- Signature -->
-                            <h4 class="text-4xl text-[#a4ab81] mb-3" style="font-family: 'Great Vibes', cursive;">
+                            <p class="text-4xl text-[#7F8760] mb-3" style="font-family: \'Great Vibes\', cursive;">
                                 Energia e foco
-                            </h4>
+                            </p>
 
                             <!-- Stars -->
                             <div class="flex items-center gap-1 text-[#C9A96E] text-base">
@@ -1116,21 +1288,21 @@
                         
                         <!-- Floating Avatar -->
                         <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full border-[6px] border-white overflow-hidden shadow-sm bg-[#f2ede4] group-hover:scale-110 transition-transform duration-500">
-                            <img src="assets/images/depoimentos/05.jpeg.jpg" alt="Paciente" class="w-full h-full object-cover">
+                            <img src="assets/images/depoimentos/05.webp" alt="Foto da paciente" width="240" height="300" decoding="async" class="w-full h-full object-cover">
                         </div>
                         
                         <!-- Text Content -->
-                        <p class="font-body text-[#8A9A8B] leading-relaxed text-[14px] italic mt-2">
+                        <p class="font-body text-[#5E6A56] leading-relaxed text-[14px] italic mt-2">
                             "Sabe a sensação de olhar no espelho e falar 'nossa, eu gosto do que estou vendo'? É uma vitória inexplicável conseguir resgatar esse amor próprio depois de tanto tempo."
                         </p>
-                        <p class="font-primary text-[11px] tracking-[0.2em] uppercase text-[#C9A96E] font-semibold mt-4">— Alessandra</p>
+                        <p class="font-primary text-[11px] tracking-[0.2em] uppercase text-[#96733A] font-semibold mt-4">— Alessandra</p>
 
                         <!-- Signature Container -->
                         <div class="mt-8 flex flex-col items-center">
                             <!-- Signature -->
-                            <h4 class="text-4xl text-[#a4ab81] mb-3" style="font-family: 'Great Vibes', cursive;">
+                            <p class="text-4xl text-[#7F8760] mb-3" style="font-family: \'Great Vibes\', cursive;">
                                 Amor próprio
-                            </h4>
+                            </p>
 
                             <!-- Stars -->
                             <div class="flex items-center gap-1 text-[#C9A96E] text-base">
@@ -1150,20 +1322,20 @@
                         
                         <!-- Floating Avatar -->
                         <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full border-[6px] border-white overflow-hidden shadow-sm bg-[#f2ede4] group-hover:scale-110 transition-transform duration-500">
-                            <img src="assets/images/depoimentos/06.jpeg.jpg" alt="Paciente" class="w-full h-full object-cover">
+                            <img src="assets/images/depoimentos/06.webp" alt="Foto da paciente" width="240" height="300" decoding="async" class="w-full h-full object-cover">
                         </div>
                         
                         <!-- Text Content -->
-                        <p class="font-body text-[#8A9A8B] leading-relaxed text-[14px] italic mt-2">
+                        <p class="font-body text-[#5E6A56] leading-relaxed text-[14px] italic mt-2">
                             "Depois de tentar de tudo e achar que meu metabolismo tinha parado, a sua abordagem foi um alívio. Consegui emagrecer de forma sustentável. Hoje me sinto disposta."
                         </p>
 
                         <!-- Signature Container -->
                         <div class="mt-8 flex flex-col items-center">
                             <!-- Signature -->
-                            <h4 class="text-4xl text-[#a4ab81] mb-3" style="font-family: 'Great Vibes', cursive;">
+                            <p class="text-4xl text-[#7F8760] mb-3" style="font-family: \'Great Vibes\', cursive;">
                                 Confiança de volta
-                            </h4>
+                            </p>
 
                             <!-- Stars -->
                             <div class="flex items-center gap-1 text-[#C9A96E] text-base">
@@ -1183,20 +1355,20 @@
                         
                         <!-- Floating Avatar -->
                         <div class="absolute -top-12 left-1/2 -translate-x-1/2 w-24 h-24 rounded-full border-[6px] border-white overflow-hidden shadow-sm bg-[#f2ede4] group-hover:scale-110 transition-transform duration-500">
-                            <img src="assets/images/depoimentos/04.jpeg.jpg" alt="Paciente" class="w-full h-full object-cover">
+                            <img src="assets/images/depoimentos/04.webp" alt="Foto da paciente" width="240" height="300" decoding="async" class="w-full h-full object-cover">
                         </div>
                         
                         <!-- Text Content -->
-                        <p class="font-body text-[#8A9A8B] leading-relaxed text-[14px] italic mt-2">
+                        <p class="font-body text-[#5E6A56] leading-relaxed text-[14px] italic mt-2">
                             "As intensas ondas de calor da menopausa e a dificuldade para emagrecer estavam acabando com a minha energia. A abordagem focada na regulação hormonal mudou tudo. Recuperei minha vitalidade! Recomendo de olhos fechados."
                         </p>
 
                         <!-- Signature Container -->
                         <div class="mt-8 flex flex-col items-center">
                             <!-- Signature -->
-                            <h4 class="text-4xl text-[#a4ab81] mb-3" style="font-family: 'Great Vibes', cursive;">
+                            <p class="text-4xl text-[#7F8760] mb-3" style="font-family: \'Great Vibes\', cursive;">
                                 Fim dos sintomas
-                            </h4>
+                            </p>
 
                             <!-- Stars -->
                             <div class="flex items-center gap-1 text-[#C9A96E] text-base">
